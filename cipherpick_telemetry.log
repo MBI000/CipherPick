@@ -1,0 +1,7 @@
+2026-04-27 20:37:32,392 - [CipherPick MITM] - INFO - pikepdf C++ to Python logger bridge initialized
+2026-04-27 20:39:02,260 - [CipherPick MITM] - INFO - === CipherPick MITM Engine Initialization ===
+2026-04-27 20:39:02,261 - [CipherPick MITM] - INFO - [*] Enabling IP forwarding...
+2026-04-27 20:39:04,911 - [CipherPick MITM] - INFO - [*] ARP Poisoning started between 192.168.1.14 and 192.168.1.1
+2026-05-05 14:51:49,258 - [CipherPick MITM] - INFO - pikepdf C++ to Python logger bridge initialized
+2026-05-12 13:10:35,204 - [CipherPick MITM] - INFO - pikepdf C++ to Python logger bridge initialized
+2026-05-12 22:17:53,099 - [CipherPick MITM] - INFO - pikepdf C++ to Python logger bridge initialized

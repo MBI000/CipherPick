@@ -6,86 +6,205 @@ class UsernameHunter:
     def __init__(self, username):
         self.username = username
         
-        # A curated list of popular sites, similar to Sherlock's data.json
+        # Merged list of 22 popular sites requested by the user with Sherlock's logic
         self.sites = {
-            "Facebook": "https://www.facebook.com/{}",
-            "Instagram": "https://www.instagram.com/{}/",
-            "X (Twitter)": "https://twitter.com/{}",
-            "YouTube": "https://www.youtube.com/@{}",
-            "TikTok": "https://www.tiktok.com/@{}",
-            "Pinterest": "https://www.pinterest.com/{}/",
-            "Twitch": "https://www.twitch.tv/{}",
-            "Snapchat": "https://www.snapchat.com/add/{}",
-            "LinkedIn": "https://www.linkedin.com/in/{}/",
-            "Medium": "https://medium.com/@{}",
-            "GitHub": "https://github.com/{}",
-            "Reddit": "https://www.reddit.com/user/{}",
-            "HackerNews": "https://news.ycombinator.com/user?id={}",
-            "Vimeo": "https://vimeo.com/{}",
-            "GitLab": "https://gitlab.com/{}",
-            "Flickr": "https://www.flickr.com/people/{}/",
-            "Dev.to": "https://dev.to/{}",
-            "Patreon": "https://www.patreon.com/{}",
-            "Spotify": "https://open.spotify.com/user/{}",
-            "Pastebin": "https://pastebin.com/u/{}",
-            "Roblox": "https://www.roblox.com/user.aspx?username={}",
-            "Wikipedia": "https://en.wikipedia.org/wiki/User:{}"
+            "Facebook": {
+                "urlMain": "https://www.facebook.com/{}",
+                "urlProbe": "https://www.facebook.com/{}/videos/",
+                "errorType": "message",
+                "errorMsg": "This page isn't available"
+            },
+            "Instagram": {
+                "urlMain": "https://www.instagram.com/{}/",
+                "urlProbe": "https://www.instagram.com/{}/",
+                "errorType": "message",
+                "errorMsg": "Sorry, this page isn't available."
+            },
+            "X (Twitter)": {
+                "urlMain": "https://twitter.com/{}",
+                "urlProbe": "https://twitter.com/{}",
+                "errorType": "status_code"
+            },
+            "YouTube": {
+                "urlMain": "https://www.youtube.com/@{}",
+                "urlProbe": "https://www.youtube.com/@{}",
+                "errorType": "status_code"
+            },
+            "TikTok": {
+                "urlMain": "https://www.tiktok.com/@{}",
+                "urlProbe": "https://www.tiktok.com/@{}",
+                "errorType": "status_code"
+            },
+            "Pinterest": {
+                "urlMain": "https://www.pinterest.com/{}/",
+                "urlProbe": "https://www.pinterest.com/oembed.json?url=https://www.pinterest.com/{}/",
+                "errorType": "status_code"
+            },
+            "Twitch": {
+                "urlMain": "https://www.twitch.tv/{}",
+                "urlProbe": "https://www.twitch.tv/{}",
+                "errorType": "message",
+                "errorMsg": "world&#39;s leading video platform"
+            },
+            "Snapchat": {
+                "urlMain": "https://www.snapchat.com/add/{}",
+                "urlProbe": "https://www.snapchat.com/add/{}",
+                "errorType": "status_code"
+            },
+            "LinkedIn": {
+                "urlMain": "https://www.linkedin.com/in/{}/",
+                "urlProbe": "https://www.linkedin.com/in/{}/",
+                "errorType": "status_code"
+            },
+            "Medium": {
+                "urlMain": "https://medium.com/@{}",
+                "urlProbe": "https://medium.com/feed/@{}",
+                "errorType": "message",
+                "errorMsg": "<body"
+            },
+            "GitHub": {
+                "urlMain": "https://github.com/{}",
+                "urlProbe": "https://github.com/{}",
+                "errorType": "status_code"
+            },
+            "Reddit": {
+                "urlMain": "https://www.reddit.com/user/{}",
+                "urlProbe": "https://www.reddit.com/user/{}",
+                "errorType": "message",
+                "errorMsg": "nobody on Reddit goes by that name"
+            },
+            "HackerNews": {
+                "urlMain": "https://news.ycombinator.com/user?id={}",
+                "urlProbe": "https://news.ycombinator.com/user?id={}",
+                "errorType": "message",
+                "errorMsg": "No such user."
+            },
+            "Vimeo": {
+                "urlMain": "https://vimeo.com/{}",
+                "urlProbe": "https://vimeo.com/{}",
+                "errorType": "status_code"
+            },
+            "GitLab": {
+                "urlMain": "https://gitlab.com/{}",
+                "urlProbe": "https://gitlab.com/api/v4/users?username={}",
+                "errorType": "message",
+                "errorMsg": "[]"
+            },
+            "Flickr": {
+                "urlMain": "https://www.flickr.com/people/{}/",
+                "urlProbe": "https://www.flickr.com/people/{}/",
+                "errorType": "status_code"
+            },
+            "Dev.to": {
+                "urlMain": "https://dev.to/{}",
+                "urlProbe": "https://dev.to/{}",
+                "errorType": "status_code"
+            },
+            "Patreon": {
+                "urlMain": "https://www.patreon.com/{}",
+                "urlProbe": "https://www.patreon.com/{}",
+                "errorType": "status_code"
+            },
+            "Spotify": {
+                "urlMain": "https://open.spotify.com/user/{}",
+                "urlProbe": "https://open.spotify.com/user/{}",
+                "errorType": "status_code"
+            },
+            "Pastebin": {
+                "urlMain": "https://pastebin.com/u/{}",
+                "urlProbe": "https://pastebin.com/u/{}",
+                "errorType": "message",
+                "errorMsg": "Not Found (#404)"
+            },
+            "Roblox": {
+                "urlMain": "https://www.roblox.com/user.aspx?username={}",
+                "urlProbe": "https://www.roblox.com/user.aspx?username={}",
+                "errorType": "status_code"
+            },
+            "Wikipedia": {
+                "urlMain": "https://en.wikipedia.org/wiki/User:{}",
+                "urlProbe": "https://en.wikipedia.org/wiki/User:{}",
+                "errorType": "message",
+                "errorMsg": "Wikipedia does not have a user page with this exact name."
+            }
         }
 
-    def _check_site(self, site_name, url_template):
-        url = url_template.format(self.username)
-        # We spoof a generic User-Agent so sites don't immediately block urllib
-        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+    def _check_site(self, site_name, site_data):
+        # Sherlock uses urlProbe to do the actual background checking
+        probe_url = site_data["urlProbe"].format(self.username)
+        main_url = site_data["urlMain"].format(self.username)
         
-        # Common phrases found on "Soft 404" pages when a user doesn't exist
-        error_phrases = [
-            b"page not found", b"couldn't find", b"does not exist",
-            b"user not found", b"account suspended", b"not be found",
-            b"404 not found", b"content unavailable", b"this page isn't available",
-            b"nobody goes by that name"
-        ]
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5'
+        }
+        
+        req = urllib.request.Request(probe_url, headers=headers)
+        error_type = site_data.get("errorType")
         
         try:
-            response = urllib.request.urlopen(req, timeout=5)
+            import ssl
+            ctx = ssl.create_default_context()
+            ctx.check_hostname = False
+            ctx.verify_mode = ssl.CERT_NONE
+            response = urllib.request.urlopen(req, timeout=10, context=ctx)
+            html = response.read().decode('utf-8', errors='ignore')
+            status_code = response.getcode()
+
+            # Message-based validation
+            if error_type == "message":
+                error_msg = site_data.get("errorMsg")
+                if error_msg and error_msg in html:
+                    return site_name, main_url, "Not Found"
+                return site_name, main_url, "Found"
+
+            # Status Code validation
+            elif error_type == "status_code":
+                if status_code >= 200 and status_code < 300:
+                    return site_name, main_url, "Found"
+                else:
+                    return site_name, main_url, "Not Found"
+
+        except urllib.error.HTTPError as e:
+            # If the site throws a 404, the user doesn't exist.
+            if e.code == 404:
+                return site_name, main_url, "Not Found"
             
-            # Check for redirect to a login/home page (soft 404 via redirect)
-            # Example: asking for /nonexistentuser redirects to /login
-            final_url = response.geturl()
-            if final_url != url and ("login" in final_url or final_url.strip('/') == url_template.split('/{')[0].strip('/')):
-                return site_name, url, False
-                
-            if response.getcode() == 200:
-                # Read a chunk of the response to check for soft 404 text
-                html = response.read(15000).lower()
-                for phrase in error_phrases:
-                    if phrase in html:
-                        return site_name, url, False
-                return site_name, url, True
-                
-        except urllib.error.HTTPError:
-            # 404 generally means the user does not exist
-            pass 
-        except Exception:
-            # Network drops, timeouts, DNS errors
-            pass 
+            # If it's a 200 OK but we hit an HTTPError, we can fallback to checking the error page HTML
+            if error_type == "message":
+                try:
+                    error_html = e.read().decode('utf-8', errors='ignore')
+                    if site_data.get("errorMsg") and site_data.get("errorMsg") in error_html:
+                        return site_name, main_url, "Not Found"
+                    # If the error message ISN'T on the error page, we assume the user exists but is private
+                    return site_name, main_url, "Found"
+                except:
+                    pass
+                    
+            return site_name, main_url, f"Blocked (HTTP {e.code})"
             
-        return site_name, url, False
+        except Exception as e:
+            return site_name, main_url, f"Error ({type(e).__name__})"
 
     def hunt(self):
-        print(f"\n[*] Hunting for username: \033[92m{self.username}\033[0m across {len(self.sites)} platforms...")
-        found = []
+        print(f"\n[*] Launching Engine for: \033[92m{self.username}\033[0m\n")
         
-        # Use threading to quickly dispatch all requests at once
+        found = []
         with ThreadPoolExecutor(max_workers=10) as executor:
-            futures = [executor.submit(self._check_site, name, url) for name, url in self.sites.items()]
+            futures = [executor.submit(self._check_site, name, data) for name, data in self.sites.items()]
             
             for future in futures:
-                site_name, url, exists = future.result()
-                if exists:
-                    print(f"[\033[92m+\033[0m] {site_name}: {url}")
-                    found.append(url)
+                site_name, main_url, status = future.result()
+                if status == "Found":
+                    # Only the '+' is colored green
+                    print(f"[\033[92m+\033[0m] {site_name}: {main_url}")
+                    found.append(main_url)
+                elif "Blocked" in status:
+                    print(f"[\033[93m!\033[0m] {site_name}: {status}") 
                 else:
-                    print(f"[\033[91m-\033[0m] {site_name}: Not Found")
+                    # Only the '-' is colored red
+                    print(f"[\033[91m-\033[0m] {site_name}: {status}")
                     
         print(f"\n[*] Hunt completed! Found \033[92m{len(found)}\033[0m profiles for '{self.username}'.")
         return found

@@ -7,13 +7,18 @@ except ImportError:
 
 class ImageSteganography:
     @staticmethod
-    def encode_text():
+    def encode_text(image_path=None, secret_text=None, output_path=None):
         if Image is None:
             print("[!] Warning: 'Pillow' library not found. Image Steganography will not work.")
             return
-        image_path = input("\nEnter path to cover image (e.g., cover.png):\n> ")
-        secret_text = input("Enter secret message to hide:\n> ") + "==EOF=="
-        output_path = input("Enter output image name (e.g., hidden.png):\n> ")
+        if image_path is None:
+            image_path = input("\nEnter path to cover image (e.g., cover.png):\n> ")
+        if secret_text is None:
+            secret_text = input("Enter secret message to hide:\n> ")
+        if output_path is None:
+            output_path = input("Enter output image name (e.g., hidden.png):\n> ")
+        
+        secret_text += "==EOF=="
 
         img = Image.open(image_path).convert('RGB')
         encoded, pixels = img.copy(), img.copy().load()
@@ -33,11 +38,12 @@ class ImageSteganography:
         print(f"\n[+] Success! Text hidden. Saved as '{output_path}'.")
 
     @staticmethod
-    def decode_text():
+    def decode_text(image_path=None):
         if Image is None:
             print("[!] Warning: 'Pillow' library not found. Image Steganography will not work.")
             return
-        image_path = input("\nEnter path to stego-image:\n> ")
+        if image_path is None:
+            image_path = input("\nEnter path to stego-image:\n> ")
         img = Image.open(image_path).convert('RGB')
         pixels, binary_data = img.load(), ""
 
@@ -56,13 +62,16 @@ class ImageSteganography:
         print("\n[-] No hidden text found.")
 
     @staticmethod
-    def encode_image():
+    def encode_image(cover_path=None, secret_path=None, output_path=None):
         if Image is None: return
         
         print("\n--- Encode: Hide Image inside Image ---")
-        cover_path = input("Enter path to COVER image (e.g., cover.png):\n> ")
-        secret_path = input("Enter path to SECRET image to hide (e.g., secret.png):\n> ")
-        output_path = input("Enter output name for the new stego-image (e.g., stego.png):\n> ")
+        if not cover_path:
+            cover_path = input("Enter path to COVER image (e.g., cover.png):\n> ")
+        if not secret_path:
+            secret_path = input("Enter path to SECRET image to hide (e.g., secret.png):\n> ")
+        if not output_path:
+            output_path = input("Enter output name for the new stego-image (e.g., stego.png):\n> ")
 
         if not os.path.exists(cover_path) or not os.path.exists(secret_path):
             print("[!] ERROR: One or both image paths do not exist.")
@@ -101,12 +110,14 @@ class ImageSteganography:
         print(f"\n[+] SUCCESS! Secret image is now hidden inside '{output_path}'.")
 
     @staticmethod
-    def decode_image():
+    def decode_image(stego_path=None, output_path=None):
         if Image is None: return
         
         print("\n--- Decode: Extract Hidden Image ---")
-        stego_path = input("Enter path to STEGO-IMAGE (e.g., stego.png):\n> ")
-        output_path = input("Enter output name for the extracted secret (e.g., extracted.png):\n> ")
+        if not stego_path:
+            stego_path = input("Enter path to STEGO-IMAGE (e.g., stego.png):\n> ")
+        if not output_path:
+            output_path = input("Enter output name for the extracted secret (e.g., extracted.png):\n> ")
 
         if not os.path.exists(stego_path):
             print("[!] ERROR: Stego-image not found.")

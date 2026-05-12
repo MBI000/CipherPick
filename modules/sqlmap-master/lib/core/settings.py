@@ -266,7 +266,7 @@ IS_WIN = PLATFORM == "nt"
 IS_PYPY = platform.python_implementation() == "PyPy"
 
 # Check if running in terminal
-IS_TTY = hasattr(sys.stdout, "fileno") and os.isatty(sys.stdout.fileno())
+IS_TTY = True # hasattr(sys.stdout, "fileno") and os.isatty(sys.stdout.fileno())
 
 # DBMS system databases
 MSSQL_SYSTEM_DBS = ("Northwind", "master", "model", "msdb", "pubs", "tempdb", "Resource", "ReportServer", "ReportServerTempDB", "distribution", "mssqlsystemresource")

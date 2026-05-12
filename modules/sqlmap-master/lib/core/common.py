@@ -1403,7 +1403,7 @@ def banner():
 
         if not IS_TTY or any(_ in sys.argv for _ in ("--disable-coloring", "--disable-colouring")):
             result = clearColors(result)
-        elif IS_WIN:
+        elif False: # IS_WIN:
             coloramainit()
 
         dataToStdout(result, forceOutput=True)

@@ -7,68 +7,120 @@ from modules.osint.target_prioritizer import TargetPrioritizer
 from modules.password_cracker.generator import AdvancedPasswordGenerator
 from modules.password_cracker.smart_brute import SmartPasswordPrioritizer
 from modules.scanner.dir_scanner import DirectoryScanner
-from modules.scanner.port_scanner import OptimizedPortScanner
+from modules.scanner.port_scanner import PortScanner
 from modules.osint.username_hunter import UsernameHunter
-
-# New imports
 from modules.password_cracker.numeric_attack import NumericAttack
 from modules.password_cracker.mask_attack import MaskAttack
 from modules.password_cracker.trie_dictionary_attack import TrieDictionaryAttack
 from modules.password_cracker.hash_cracker import HashCracker
 from modules.password_cracker.frequency_analyzer import FrequencyAnalyzer
-
 from modules.stegano.text_stegano import TextSteganography
 from modules.stegano.image_stegano import ImageSteganography
-
 from modules.forensics.investigation_tool import InvestigationTool
-
-
-# ==========================================
+from modules.mitm.interceptor import CipherPickMITM
+#===========================================
 # MENUS
-# ==========================================
+#===========================================
+def recover_pdf_password():
+    import pikepdf
+    pdf_path = input("Enter the full path to your PDF file: ").strip().strip('"')
+    wordlist_path = input("Enter the full path to your wordlist (.txt): ").strip().strip('"')
+
+    if not os.path.exists(pdf_path) or not os.path.exists(wordlist_path):
+        print("\n[!] Error: One of the file paths provided does not exist. Please check the paths and try again.")
+        return
+
+    print(f"\n--- Attempting recovery on: {os.path.basename(pdf_path)} ---")
+
+    try:
+        with open(wordlist_path, 'r', encoding='utf-8', errors='ignore') as words:
+
+            for line in words:
+                password = line.strip()
+
+                try:
+                    with pikepdf.open(pdf_path, password=password) as pdf:
+                        print(f"\n[+] SUCCESS!")
+                        print(f"[*] Password: {password}")
+                        return
+                except pikepdf.PasswordError:
+                    continue
+                except Exception as e:
+                    print(f"\n[!] An error occurred during processing: {e}")
+                    return
+
+        print("\n[-] Finished: Password not found in the wordlist.")
+
+    except Exception as e:
+        print(f"[!] Could not open the wordlist file: {e}")
+
 def attacks_menu():
     while True:
         print("\n--- Attacks Menu ---")
-        print("1. PDF Numeric Brute-Force")
-        print("2. PDF Dictionary Attack (Trie/DFS Mutation)")
-        print("3. PDF Mask Attack (Backtracking)")
-        print("4. Hash Cracker (O(1) Map)")
-        print("5. Cryptanalysis: Frequency Analyzer")
-        print("6. Advanced Password Generator (Recursion)")
-        print("7. Smart Password Prioritization (Greedy)")
-        print("8. Back to Main Menu")
+        print("1. PDF Password Recovery")
+        print("2. MITM (Man-In-The-Middle) Interception")
+        print("3. Zphisher (Automated Phishing Tool)")
+        print("4. Back to Main Menu")
 
         choice = input("Select an attack: ")
 
-        if choice in ['1', '2', '3']:
-            pdf_path = input("\nEnter PDF path:\n> ")
-            if choice == '1':
+        if choice == '1':
+            recover_pdf_password()
+        elif choice == '2':
+            import time
+            print("\n[+] Launching Evilginx 3 and ARP Poisoner...")
+            target_ip = input("Enter Target IP (leave blank for just Evilginx): ").strip()
+            
+            try:
+                # Start Evilginx 3 in a new interactive Command Prompt window
+                evilginx_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "evilginx3-master", "evilginx3-master")
+                print("\n[+] Spawning Evilginx 3 console...")
+                subprocess.Popen(f'start cmd /k "cd /d {evilginx_dir} && go run main.go -p ./phishlets"', shell=True)
+                
+                if target_ip:
+                    gateway_ip = input("Enter Gateway IP: ").strip()
+                    interface = input("Enter Network Interface (e.g., eth0 or Wi-Fi): ").strip()
+                    
+                    # Start the Python ARP Poisoner in the background
+                    from modules.mitm.controller import ArpPoisoner
+                    poisoner = ArpPoisoner(target_ip, gateway_ip, interface)
+                    poisoner.start()
+                    print("[+] ARP Poisoning active. Manage interception in the new Evilginx window.")
+                    print("[+] Press Ctrl+C here to stop ARP spoofing and restore network.")
+                    
+                    while True:
+                        time.sleep(1)
+                else:
+                    print("[*] Skipped ARP poisoning. Evilginx 3 is running standalone in the new window.")
+            except KeyboardInterrupt:
+                if 'poisoner' in locals():
+                    print("\n[*] Stopping ARP Poisoning and restoring network...")
+                    poisoner.stop()
+            except Exception as e:
+                print(f"\n[!] Failed to start MITM: {e}")
+        elif choice == '3':
+            zphisher_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "modules", "zphisher")
+            if not os.path.exists(zphisher_dir):
+                print("\n[!] Zphisher is not installed correctly.")
+            else:
+                print("\n[+] Launching Zphisher...")
+                bash_path = "bash"
+                if os.name == 'nt':
+                    git_bash_path = r"C:\Program Files\Git\bin\bash.exe"
+                    if os.path.exists(git_bash_path):
+                        bash_path = f'"{git_bash_path}"'
+                
                 try:
-                    NumericAttack(pdf_path, int(input("Enter length: "))).execute()
-                except ValueError:
-                    print("\n[!] Invalid input.")
-            elif choice == '2':
-                TrieDictionaryAttack(pdf_path, input("Enter wordlist path:\n> ")).execute()
-            elif choice == '3':
-                MaskAttack(pdf_path, input("Enter mask (?d=digit, ?l=letter):\n> ")).execute()
+                    # Spawn in a new Command Prompt to render the TUI correctly, run zphisher and wait for keypress on exit
+                    command = f'start cmd /c "{bash_path} zphisher && pause"'
+                    subprocess.Popen(command, shell=True, cwd=zphisher_dir)
+                    print("[+] Zphisher launched in a new window.")
+                except Exception as e:
+                    print(f"\n[!] Error launching Zphisher: {e}")
         elif choice == '4':
-            HashCracker.crack(input("Enter target hash:\n> "), input("Enter wordlist path:\n> "),
-                              input("Algorithm (md5/sha256): ").lower())
-        elif choice == '5':
-            FrequencyAnalyzer.decrypt_caesar(input("Enter the encrypted text:\n> "))
-        elif choice == '6':
-            words = input("\nEnter base words separated by space:\n> ").split()
-            AdvancedPasswordGenerator(words).generate()
-        elif choice == '7':
-            pwds = input("\nEnter passwords to rank separated by space:\n> ").split()
-            name = input("Enter target name context (optional):\n> ")
-            year = input("Enter target year context (optional):\n> ")
-            SmartPasswordPrioritizer({"name": name, "year": year}).rank_passwords(pwds)
-        elif choice == '8':
             break
         else:
             print("\n[!] Invalid selection.")
-
 
 def steganography_menu():
     while True:
@@ -141,26 +193,7 @@ def osint_menu():
             print("\n[+] Starting SQLMap...")
             subprocess.run([sys.executable, "modules/sqlmap-master/sqlmap.py", "-u", url, "--batch"])
         elif choice == '2':
-            target = input("\nEnter target IP/Domain:\n> ")
-            print("\nSelect ports to scan:")
-            print("  - 'all' for 1->65535")
-            print("  - 'common' for top 20 common ports")
-            print("  - Or enter space-separated ports (e.g., 80 443 22)")
-            ports_input = input("> ").strip().lower()
-            
-            port_list = []
-            if ports_input == 'all':
-                port_list = list(range(1, 65536))
-            elif ports_input == 'common':
-                port_list = [80, 443, 21, 22, 23, 25, 53, 110, 111, 135, 139, 143, 445, 993, 995, 1723, 3306, 3389, 5900, 8080]
-            else:
-                try:
-                    port_list = [int(p) for p in ports_input.split()]
-                except ValueError:
-                    print("\n[!] Invalid port list. Please enter numbers, 'all', or 'common'.")
-            
-            if port_list:
-                OptimizedPortScanner(target).scan(port_list)
+            PortScanner.advanced_scan()
         elif choice == '3':
             username = input("\nEnter target username to hunt:\n> ")
             UsernameHunter(username).hunt()
@@ -193,7 +226,7 @@ def main():
         print("4. OSINT and Information Gathering")
         print("5. Exit")
 
-        choice = input("Select a category (1-5): ")
+        choice = input("Select a category: ")
 
         if choice == '1':
             attacks_menu()

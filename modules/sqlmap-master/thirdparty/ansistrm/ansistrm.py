@@ -9,7 +9,7 @@ import sys
 
 from lib.core.settings import IS_WIN
 
-if IS_WIN:
+if False: # IS_WIN:
     import ctypes
     import ctypes.wintypes
 
@@ -50,8 +50,7 @@ class ColorizingStreamHandler(logging.StreamHandler):
 
     @property
     def is_tty(self):
-        isatty = getattr(self.stream, 'isatty', None)
-        return isatty and isatty() and not self.disable_coloring
+        return not self.disable_coloring
 
     def emit(self, record):
         try:
@@ -74,7 +73,7 @@ class ColorizingStreamHandler(logging.StreamHandler):
         except:
             self.handleError(record)
 
-    if not IS_WIN:
+    if True: # not IS_WIN:
         def output_colorized(self, message):
             self.stream.write(message)
     else:
