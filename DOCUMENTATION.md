@@ -16,6 +16,7 @@
 7. [Category 5 — Cryptographic Engine](#7-category-5--cryptographic-engine)
 8. [Core Algorithm Engines](#8-core-algorithm-engines)
 9. [Algorithm Complexity Summary Table](#9-algorithm-complexity-summary-table)
+10. [AES-128 vs SHA-256 vs RSA-2048](#aes-128-vs-sha-256-vs-rsa-2048)
 
 ---
 
