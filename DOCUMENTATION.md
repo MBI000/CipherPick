@@ -599,3 +599,440 @@ traverse(state, expand)            # Full graph traversal
 - S = number of sites (22)
 - k = RSA key size in bits (2048)
 - C = number of characters extracted (SQL blind)
+
+---
+
+# AES-128 vs SHA-256 vs RSA-2048
+
+These three algorithms are used for completely different purposes in cryptography.
+
+| Algorithm | Type | Main Purpose | Uses Key? | Reversible? |
+|---|---|---|---|---|
+| AES-128 | Symmetric Encryption | Encrypt/decrypt data | Yes | Yes |
+| SHA-256 | Hash Function | Create fixed fingerprint of data | No secret key | No |
+| RSA-2048 | Asymmetric Encryption | Secure key exchange and digital signatures | Public/private keys | Yes |
+
+---
+
+# 1. AES-128
+
+## What is AES-128?
+
+AES (Advanced Encryption Standard) is a **symmetric block cipher**.
+
+- The same key is used for encryption and decryption.
+- AES-128 uses:
+  - 128-bit key
+  - 128-bit block size
+  - 10 rounds of transformations
+
+### Common Uses
+
+- WPA2/WPA3 Wi-Fi
+- VPNs
+- HTTPS/TLS
+- Disk encryption
+
+---
+
+# How AES-128 Works
+
+AES treats data as a **4×4 byte matrix** called the **state**.
+
+Example plaintext:
+
+```text
+HELLO_AES_128!!
+```
+
+The plaintext is converted into hexadecimal bytes and processed through multiple rounds.
+
+---
+
+# AES Main Structure
+
+```text
+Plaintext
+   ↓
+AddRoundKey
+   ↓
+Round 1
+SubBytes
+ShiftRows
+MixColumns
+AddRoundKey
+   ↓
+...
+   ↓
+Round 10
+SubBytes
+ShiftRows
+AddRoundKey
+   ↓
+Ciphertext
+```
+
+---
+
+# AES Internal Algorithms
+
+## 1. SubBytes
+
+A nonlinear substitution step using an **S-box**.
+
+Each byte is replaced with another byte.
+
+### Purpose
+
+- Confusion
+- Protection against linear attacks
+
+### Mathematics
+
+AES operations are based on finite field arithmetic:
+
+```math
+GF(2^8)
+```
+
+---
+
+## 2. ShiftRows
+
+Rows of the matrix are cyclically shifted.
+
+```text
+Row0: no shift
+Row1: shift left by 1
+Row2: shift left by 2
+Row3: shift left by 3
+```
+
+### Purpose
+
+- Spread data across columns
+
+---
+
+## 3. MixColumns
+
+Each column is transformed using matrix multiplication over finite fields.
+
+Core matrix:
+
+```math
+\begin{bmatrix}
+2 & 3 & 1 & 1 \\
+1 & 2 & 3 & 1 \\
+1 & 1 & 2 & 3 \\
+3 & 1 & 1 & 2
+\end{bmatrix}
+```
+
+### Purpose
+
+- Diffusion
+- Small changes affect the entire ciphertext
+
+---
+
+## 4. AddRoundKey
+
+The current state is XORed with the round key.
+
+```math
+State \oplus RoundKey
+```
+
+### Purpose
+
+- Inject the secret key into encryption rounds
+
+---
+
+# AES-128 Security
+
+Brute-force complexity:
+
+```math
+2^{128}
+```
+
+This number is astronomically large and practically impossible to brute force with modern computing.
+
+---
+
+# 2. SHA-256
+
+## What is SHA-256?
+
+SHA-256 (Secure Hash Algorithm 256-bit) is a **cryptographic hash function**.
+
+### Input
+
+- Any size of data
+
+### Output
+
+- Fixed 256-bit hash
+
+Example:
+
+```text
+Input:
+hello
+
+Output:
+2cf24dba5fb0...
+```
+
+---
+
+# Important Property
+
+SHA-256 is:
+
+```text
+One-way
+```
+
+You cannot reverse or decrypt a SHA-256 hash.
+
+---
+
+# Common Uses
+
+- Password hashing
+- File integrity verification
+- Blockchain
+- Digital signatures
+- Checksums
+
+---
+
+# How SHA-256 Works
+
+SHA-256 processes data in:
+
+```math
+512\text{-bit blocks}
+```
+
+It uses:
+- Bitwise operations
+- Modular arithmetic
+- Rotations
+- Compression functions
+
+---
+
+# SHA-256 Internal Process
+
+## Step 1 — Padding
+
+The message is padded so its length becomes:
+
+```math
+\equiv 448 \pmod{512}
+```
+
+Then the original message length is appended.
+
+---
+
+## Step 2 — Initialize Hash Values
+
+SHA-256 uses predefined constants derived from prime numbers.
+
+---
+
+## Step 3 — Message Schedule
+
+The original 16 words are expanded into 64 words.
+
+---
+
+## Step 4 — Compression Function
+
+The algorithm runs 64 rounds using operations such as:
+
+### XOR
+
+```math
+a \oplus b
+```
+
+### Rotate Right
+
+```math
+ROTR^n(x)
+```
+
+### Modular Addition
+
+```math
+(a+b)\bmod 2^{32}
+```
+
+---
+
+# SHA-256 Security
+
+Total output possibilities:
+
+```math
+2^{256}
+```
+
+Collision attacks theoretically require approximately:
+
+```math
+2^{128}
+```
+
+operations due to the birthday paradox.
+
+---
+
+# 3. RSA-2048
+
+## What is RSA-2048?
+
+RSA is an **asymmetric encryption algorithm**.
+
+It uses:
+- Public key
+- Private key
+
+One key encrypts data while the other decrypts it.
+
+---
+
+# Common Uses
+
+- HTTPS/TLS
+- Digital signatures
+- Secure key exchange
+- Certificates
+
+---
+
+# Core Idea Behind RSA
+
+RSA security relies on the difficulty of:
+
+```text
+Factoring very large integers
+```
+
+Multiplying large prime numbers is easy.
+
+Factoring their product is extremely difficult.
+
+---
+
+# How RSA Works
+
+## Step 1 — Choose Two Large Prime Numbers
+
+```math
+p,\ q
+```
+
+---
+
+## Step 2 — Multiply Them
+
+```math
+n = p \times q
+```
+
+For RSA-2048, `n` is approximately 2048 bits long.
+
+---
+
+## Step 3 — Compute Euler's Totient
+
+```math
+\varphi(n)=(p-1)(q-1)
+```
+
+---
+
+## Step 4 — Choose Public Exponent
+
+Usually:
+
+```math
+e=65537
+```
+
+---
+
+## Step 5 — Compute Private Key
+
+Find:
+
+```math
+d \equiv e^{-1} \pmod{\varphi(n)}
+```
+
+---
+
+# RSA Encryption
+
+Encryption:
+
+```math
+c \equiv m^e \pmod n
+```
+
+Decryption:
+
+```math
+m \equiv c^d \pmod n
+```
+
+---
+
+# RSA-2048 Security
+
+RSA security depends on:
+- Integer factorization difficulty
+- Number theory
+- Modular arithmetic
+
+No practical classical attack currently breaks properly implemented RSA-2048.
+
+However, large-scale quantum computers using Shor's Algorithm could theoretically break RSA in the future.
+
+---
+
+# Major Differences
+
+| Feature | AES-128 | SHA-256 | RSA-2048 |
+|---|---|---|---|
+| Type | Symmetric Cipher | Hash Function | Asymmetric Cipher |
+| Reversible | Yes | No | Yes |
+| Speed | Very Fast | Fast | Slow |
+| Key Size | 128-bit | No key | 2048-bit |
+| Main Mathematics | Finite Fields | Bitwise Operations | Modular Arithmetic |
+| Primary Use | Data Encryption | Integrity Verification | Key Exchange & Signatures |
+| Quantum Resistance | Partial | Better | Weak against Shor's Algorithm |
+
+---
+
+# Real-World HTTPS Example
+
+When visiting a secure HTTPS website:
+
+1. RSA or ECC:
+   - Securely exchanges encryption keys
+
+2. AES:
+   - Encrypts the actual communication traffic
+
+3. SHA-256:
+   - Verifies integrity and certificates
+
+All three algorithms work together in modern cryptographic systems.
