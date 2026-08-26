@@ -1,20 +1,16 @@
 import hashlib
-import streamlit as st
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
 from cryptography.hazmat.primitives import hashes, serialization
 
 # --- SHA-256 ---
-@st.cache_data
 def generate_sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 # --- AES (Fernet) ---
-@st.cache_data
 def generate_aes_key() -> bytes:
     return Fernet.generate_key()
 
-@st.cache_data
 def aes_encrypt(data: bytes, key: bytes) -> bytes:
     try:
         f = Fernet(key)
@@ -22,7 +18,6 @@ def aes_encrypt(data: bytes, key: bytes) -> bytes:
     except Exception as e:
         raise ValueError(f"Encryption failed: {e}")
 
-@st.cache_data
 def aes_decrypt(token: bytes, key: bytes) -> bytes:
     try:
         f = Fernet(key)
@@ -31,7 +26,6 @@ def aes_decrypt(token: bytes, key: bytes) -> bytes:
         raise ValueError(f"Decryption failed: {e}")
 
 # --- RSA ---
-@st.cache_data
 def generate_rsa_keypair():
     private_key = rsa.generate_private_key(
         public_exponent=65537,
@@ -50,7 +44,6 @@ def generate_rsa_keypair():
     )
     return pem_private, pem_public
 
-@st.cache_data
 def rsa_encrypt(data: bytes, pem_public: bytes) -> bytes:
     try:
         public_key = serialization.load_pem_public_key(pem_public)
@@ -66,7 +59,6 @@ def rsa_encrypt(data: bytes, pem_public: bytes) -> bytes:
     except Exception as e:
         raise ValueError(f"RSA Encryption failed: {e}")
 
-@st.cache_data
 def rsa_decrypt(ciphertext: bytes, pem_private: bytes) -> bytes:
     try:
         private_key = serialization.load_pem_private_key(pem_private, password=None)

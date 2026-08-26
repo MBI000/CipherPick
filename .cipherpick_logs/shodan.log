@@ -1,0 +1,22 @@
+[96m[*] Starting Shodan OSINT Scan for target: 52.112.213.48[0m
+[96m[*] Querying Shodan API for IP: 52.112.213.48 (Target: 52.112.213.48)...[0m
+[92m[+] Shodan Intelligence Summary for 52.112.213.48 (52.112.213.48)[0m
+    • Organization : [96mMicrosoft Corporation[0m
+    • ISP          : Microsoft Corporation
+    • Location     : Paris, France
+    • OS           : None
+    • Hostnames    : r0.az.relay.teams.cloud.microsoft, r0.az.relay.teams.microsoft.com, az.relay.teams.cloud.microsoft, turn.teams.microsoft.com, tr.teams.microsoft.com, msit.az.relay.teams.microsoft.com, msit.az.relay.teams.cloud.microsoft
+    • Open Ports   : [93m55553, 50050, 55555, 50053, 52230, 50443, 55554, 55000, 55442, 55443, 55982, 3478, 50073, 52869, 50080, 55201, 51106, 54022, 55081, 52010, 52951, 57779, 50996, 50101, 50999, 51000, 51002, 51003, 51005, 56896, 50113, 52931, 54857, 54327, 51294, 52814, 50000, 50001, 50002, 50003, 50005, 52311, 50008, 53467, 50014, 60000, 53200, 443, 58603, 52718, 50160, 57109, 59896, 54138, 55423[0m
+
+[96m--- Running Services (55) ---[0m
+  • [93mPort 443/TCP[0m: Unknown Service
+  • [93mPort 3478/UDP[0m: Unknown Service
+    Raw Banner: \x01\x01\x00\x0c!\x12\xa4B0wUp2q2xqqjj\x00 \x00\x08\x00\x01E\xf9w$\xbbb
+  • [93mPort 50000/TCP[0m: Unknown Service
+  • [93mPort 50001/TCP[0m: Unknown Service
+  • [93mPort 50002/TCP[0m: Unknown Service
+  • [93mPort 50003/TCP[0m: Unknown Service
+  • [93mPort 50005/TCP[0m: Unknown Service
+  • [93mPort 50008/TCP[0m: Unknown Service
+  • [93mPort 50014/TCP[0m: Unknown Service
+  • [93mPort 50050/TCP[0m: Unknown Service

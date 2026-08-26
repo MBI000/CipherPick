@@ -1,92 +1,185 @@
 [1;36m### Phase 1 · Socket Scan (CipherPick native) ###[0m[0m
 [0m
-Starting CipherPick Port Scanner 1.0 at 2026-05-13 00:33[0m
-[0mPort scan report for sis.rst.edu.eg (85.215.109.65)[0m
+Starting CipherPick Port Scanner 1.0 at 2026-05-13 22:33[0m
+[0mPort scan report for 192.168.1.124[0m
 [0mHost is up (0.071s latency).[0m
+[0mrDNS record for 192.168.1.124: NPI241155[0m
 [0mPORT     STATE    SERVICE[0m
-[0m80/tcp   [91mclosed[0m   http[0m
+[0m80/tcp   [92mopen[0m     http[0m
 [0m443/tcp  [92mopen[0m     https[0m
-[0m21/tcp   [93mfiltered[0m ftp[0m
-[0m22/tcp   [93mfiltered[0m ssh[0m
-[0m23/tcp   [93mfiltered[0m telnet[0m
-[0m25/tcp   [93mfiltered[0m smtp[0m
+[0m21/tcp   [92mopen[0m     ftp[0m
+[0m22/tcp   [91mclosed[0m   ssh[0m
+[0m23/tcp   [92mopen[0m     telnet[0m
+[0m25/tcp   [91mclosed[0m   smtp[0m
 [0m8080/tcp [92mopen[0m     http-proxy[0m
-[0m53/tcp   [93mfiltered[0m domain[0m
-[0m110/tcp  [93mfiltered[0m pop3[0m
-[0m111/tcp  [93mfiltered[0m sunrpc[0m
-[0m135/tcp  [93mfiltered[0m epmap[0m
-[0m139/tcp  [93mfiltered[0m netbios-ssn[0m
-[0m143/tcp  [93mfiltered[0m imap[0m
-[0m445/tcp  [93mfiltered[0m microsoft-ds[0m
-[0m993/tcp  [93mfiltered[0m imaps[0m
-[0m995/tcp  [93mfiltered[0m pop3s[0m
-[0m1723/tcp [93mfiltered[0m pptp[0m
-[0m3306/tcp [93mfiltered[0m unknown[0m
-[0m3389/tcp [92mopen[0m     ms-wbt-server[0m
-[0m5900/tcp [93mfiltered[0m unknown[0m
+[0m53/tcp   [91mclosed[0m   domain[0m
+[0m110/tcp  [91mclosed[0m   pop3[0m
+[0m111/tcp  [91mclosed[0m   sunrpc[0m
+[0m135/tcp  [91mclosed[0m   epmap[0m
+[0m139/tcp  [91mclosed[0m   netbios-ssn[0m
+[0m143/tcp  [91mclosed[0m   imap[0m
+[0m445/tcp  [91mclosed[0m   microsoft-ds[0m
+[0m993/tcp  [91mclosed[0m   imaps[0m
+[0m995/tcp  [91mclosed[0m   pop3s[0m
+[0m1723/tcp [91mclosed[0m   pptp[0m
+[0m3306/tcp [91mclosed[0m   unknown[0m
+[0m3389/tcp [91mclosed[0m   ms-wbt-server[0m
+[0m5900/tcp [91mclosed[0m   unknown[0m
 [0m
-Nmap done: 1 IP address (1 host up) scanned in 7.18 seconds[0m
+Nmap done: 1 IP address (1 host up) scanned in 3.56 seconds[0m
 [0m
 [1;36m### Phase 2 · NMAP Aggressive Scan (nmap -A -vv) ###[0m[0m
-[0mStarting Nmap 7.98 ( https://nmap.org ) at 2026-05-13 00:33 +0300
-[0m[96m[1mNmap scan report for sis.rst.edu.eg ([95m85.215.109.65[0m)[0m
-[0m[92m[1mHost is up (0.078s latency).[0m
-[0m[91mNot shown: 993 filtered tcp ports (no-response)[0m
-[0mPORT     STATE  SERVICE       VERSION
-[0m[91m80/tcp   closed http[0m
-[0m[92m[1m83/tcp   open   http          Microsoft IIS httpd 10.0[0m
+[0mStarting Nmap 7.98 ( https://nmap.org ) at 2026-05-13 22:33 +0300
+[0m[96mNSE: Loaded 158 scripts for scanning.[0m
+[0m[96mNSE: Script Pre-scanning.[0m
+[0m[96mNSE: Starting runlevel 1 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:33[0m
+[0m[96mCompleted NSE at 22:33, 0.00s elapsed[0m
+[0m[96mNSE: Starting runlevel 2 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:33[0m
+[0m[96mCompleted NSE at 22:33, 0.00s elapsed[0m
+[0m[96mNSE: Starting runlevel 3 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:33[0m
+[0m[96mCompleted NSE at 22:33, 0.00s elapsed[0m
+[0m[96mInitiating ARP Ping Scan at 22:33[0m
+[0m[96mScanning [95m192.168.1.124[0m [1 port][0m
+[0m[96mCompleted ARP Ping Scan at 22:33, 0.36s elapsed (1 total hosts)[0m
+[0m[96mInitiating Parallel DNS resolution of 1 host. at 22:33[0m
+[0m[96mCompleted Parallel DNS resolution of 1 host. at 22:33, 0.51s elapsed[0m
+[0m[96mInitiating SYN Stealth Scan at 22:33[0m
+[0m[96mScanning [95m192.168.1.124[0m [1000 ports][0m
+[0m[92m[1mDiscovered open port 80/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 21/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 23/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 8080/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 443/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 5222/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 82/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 631/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 83/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 9100/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 81/tcp on [95m192.168.1.124[0m[0m
+[0m[92m[1mDiscovered open port 515/tcp on [95m192.168.1.124[0m[0m
+[0m[96mCompleted SYN Stealth Scan at 22:33, 2.29s elapsed (1000 total ports)[0m
+[0m[96mInitiating Service scan at 22:33[0m
+[0m[96mScanning 11 services on [95m192.168.1.124[0m[0m
+[0m[96mCompleted Service scan at 22:33, 11.08s elapsed (12 services on 1 host)[0m
+[0m[96mInitiating OS detection (try #1) against [95m192.168.1.124[0m[0m
+[0m[96mNSE: Script scanning [95m192.168.1.124[0m.[0m
+[0m[96mNSE: Starting runlevel 1 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:33[0m
+[0m[96mCompleted NSE at 22:33, 5.79s elapsed[0m
+[0m[96mNSE: Starting runlevel 2 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:33[0m
+[0m[96mCompleted NSE at 22:33, 3.55s elapsed[0m
+[0m[96mNSE: Starting runlevel 3 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:33[0m
+[0m[96mCompleted NSE at 22:33, 0.01s elapsed[0m
+[0m[96m[1mNmap scan report for [95m192.168.1.124[0m[0m
+[0m[92m[1mHost is up, received arp-response (0.065s latency).[0m
+[0mScanned at 2026-05-13 22:33:17 Egypt Daylight Time for 26s
+[0m[91mNot shown: 988 closed tcp ports (reset)[0m
+[0mPORT     STATE SERVICE        REASON         VERSION
+[0m[92m[1m21/tcp   open  ftp            syn-ack ttl 64 oftpd[0m
+[0m[94m| ftp-syst: [0m
+[0m[94m|_  SYST: .[0m
+[0m[94m| ftp-anon: Anonymous FTP login allowed (FTP code 230)[0m
+[0m[94m|_.[0m
+[0m[92m[1m23/tcp   open  telnet         syn-ack ttl 64 HP LaserJet printer telnetd (busy)[0m
+[0m[92m[1m80/tcp   open  soap           syn-ack ttl 64 gSOAP 2.7[0m
 [0m[94m| http-methods: [0m
-[0m[94m|_  Potentially risky methods: TRACE[0m
-[0m[94m|_http-title: 403 - Forbidden: Access is denied.[0m
-[0m[94m|_http-server-header: Microsoft-IIS/10.0[0m
-[0m[92m[1m443/tcp  open   ssl/https?[0m
-[0m[94m| ssl-cert: Subject: commonName=sis.rst.edu.eg[0m
-[0m[94m| Subject Alternative Name: DNS:sis.rst.edu.eg, DNS:payment.rst.edu.eg[0m
-[0m[94m| Not valid before: 2025-12-28T00:00:00[0m
-[0m[94m|_Not valid after:  2026-12-31T23:59:59[0m
-[0m[94m| tls-alpn: [0m
-[0m[94m|   h2[0m
-[0m[94m|_  http/1.1[0m
+[0m[94m|_  Supported Methods: HEAD[0m
+[0m[92m[1m81/tcp   open  tcpwrapped     syn-ack ttl 64[0m
+[0m[92m[1m82/tcp   open  tcpwrapped     syn-ack ttl 64[0m
+[0m[92m[1m83/tcp   open  tcpwrapped     syn-ack ttl 64[0m
+[0m[92m[1m443/tcp  open  ssl/tcpwrapped syn-ack ttl 64[0m
+[0m[94m| ssl-cert: Subject: commonName=NPI241155.home/organizationName=Hewlett-Packard Co./organizationalUnitName=PHKFG18281[0m
+[0m[94m| Issuer: commonName=NPI241155.home/organizationName=Hewlett-Packard Co./organizationalUnitName=PHKFG18281[0m
+[0m[94m| Public Key type: rsa[0m
+[0m[94m| Public Key bits: 1024[0m
+[0m[94m| Signature Algorithm: md5WithRSAEncryption[0m
+[0m[94m| Not valid before: 2013-11-01T00:00:00[0m
+[0m[94m| Not valid after:  2023-11-01T00:00:00[0m
+[0m[94m| MD5:     4c67 818c 97ad 2a40 0786 ed73 62b8 4068[0m
+[0m[94m| SHA-1:   8a32 da03 77f0 e567 e5e4 86ef 35b5 82d1 8a64 1d21[0m
+[0m[94m| SHA-256: 098c fd70 0ed8 1277 b90d 16a0 b102 2dec e1cb 298b 28a6 626e cd58 3ec9 386a dd91[0m
+[0m[94m| -----BEGIN CERTIFICATE-----[0m
+[0m[94m| MIICYDCCAcmgAwIBAgIER3+kdTANBgkqhkiG9w0BAQQFADBjMRcwFQYDVQQDEw5O[0m
+[0m[94m| UEkyNDExNTUuaG9tZTEcMBoGA1UEChMTSGV3bGV0dC1QYWNrYXJkIENvLjEVMBMG[0m
+[0m[94m| A1UECxMMNkNDMjE3MjQxMTU1MRMwEQYDVQQLEwpQSEtGRzE4MjgxMB4XDTEzMTEw[0m
+[0m[94m| MTAwMDAwMFoXDTIzMTEwMTAwMDAwMFowYzEXMBUGA1UEAxMOTlBJMjQxMTU1Lmhv[0m
+[0m[94m| bWUxHDAaBgNVBAoTE0hld2xldHQtUGFja2FyZCBDby4xFTATBgNVBAsTDDZDQzIx[0m
+[0m[94m| NzI0MTE1NTETMBEGA1UECxMKUEhLRkcxODI4MTCBnzANBgkqhkiG9w0BAQEFAAOB[0m
+[0m[94m| jQAwgYkCgYEAoMLZlql6tSa5Txk/TvN/6K10+Yz8Ze9MBOvgP1vBiXqbLrzAA0Nl[0m
+[0m[94m| tgjtS6uQyTPBUHQURAw0UeQpV32IHemKqKU5RMWh6EH3npOCgqO9iERiID5+eTv/[0m
+[0m[94m| JGTGOleu4z8BsIlHZk6qKGRVbz+hdDhw0puWzBTg6CV/cIIqGillDb0CAwEAAaMh[0m
+[0m[94m| MB8wHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMA0GCSqGSIb3DQEBBAUA[0m
+[0m[94m| A4GBAEpCQa71q3NxC9wPPpnnaw3Q6H36QVkWizKb1Aaqpd2gHHhVsFLNrI3uGpjE[0m
+[0m[94m| lXXG/YlezmfVqSyYzmEpJjPP8MvAG9yguI8C1hxy/yvrwbfOVEcE0jdksNCVGscN[0m
+[0m[94m| RF+tK1rK18iNE7KYUgA4l0sS4tRP784dp8zdqfJjJGomJ11C[0m
+[0m[94m|_-----END CERTIFICATE-----[0m
 [0m[94m|_ssl-date: TLS randomness does not represent time[0m
-[0m[92m[1m3389/tcp open   ms-wbt-server Microsoft Terminal Services[0m
-[0m[94m|_ssl-date: 2026-05-12T21:35:00+00:00; -2s from scanner time.[0m
-[0m[94m| ssl-cert: Subject: commonName=656DE06.online-server.cloud[0m
-[0m[94m| Not valid before: 2026-01-05T14:45:32[0m
-[0m[94m|_Not valid after:  2026-07-07T14:45:32[0m
-[0m[92m[1m8080/tcp open   http          Microsoft IIS httpd 10.0[0m
 [0m[94m| http-methods: [0m
-[0m[94m|_  Potentially risky methods: TRACE[0m
-[0m[94m|_http-title: Did not follow redirect to /Default.aspx[0m
-[0m[94m|_http-open-proxy: Proxy might be redirecting requests[0m
-[0m[92m[1m8085/tcp open   http          Microsoft IIS httpd 10.0[0m
-[0m[94m|_http-server-header: Microsoft-IIS/10.0[0m
-[0m[94m|_http-title: Site doesn't have a title.[0m
-[0m[92m[1m8088/tcp open   http          Microsoft IIS httpd 10.0[0m
-[0m[94m|_http-server-header: Microsoft-IIS/10.0[0m
-[0m[94m|_http-title: Site doesn't have a title (text/html; charset=utf-8).[0m
-[0mDevice type: general purpose
-[0m[93mRunning (JUST GUESSING): Microsoft Windows 2016|2012|2022 (91%)[0m
-[0mOS CPE: cpe:/o:microsoft:windows_server_2016 cpe:/o:microsoft:windows_server_2012:r2 cpe:/o:microsoft:windows_server_2022
-[0m[93mAggressive OS guesses: Microsoft Windows Server 2016 (91%), Microsoft Windows Server 2012 R2 (86%), Microsoft Windows Server 2022 (86%)[0m
-[0mNo exact OS matches for host (test conditions non-ideal).
-[0mNetwork Distance: 13 hops
-[0mService Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+[0m[94m|_  Supported Methods: GET HEAD[0m
+[0m[94m|_http-title: HP LaserJet 400 M401dne&nbsp;&nbsp;&nbsp;[95m192.168.1.124[0m[0m
+[0m[92m[1m515/tcp  open  printer        syn-ack ttl 64[0m
+[0m[92m[1m631/tcp  open  soap           syn-ack ttl 64 gSOAP 2.7[0m
+[0m[94m| http-methods: [0m
+[0m[94m|_  Supported Methods: HEAD[0m
+[0m[92m[1m5222/tcp open  tcpwrapped     syn-ack ttl 64[0m
+[0m[94m| xmpp-info: [0m
+[0m[91m|   STARTTLS Failed[0m
+[0m[94m|   info: [0m
+[0m[94m|     auth_mechanisms: [0m
+[0m[94m|     unknown: [0m
+[0m[94m|     xmpp: [0m
+[0m[94m|     compression_methods: [0m
+[0m[91m|     errors: [0m
+[0m[94m|       (timeout)[0m
+[0m[94m|     capabilities: [0m
+[0m[94m|_    features: [0m
+[0m[92m[1m8080/tcp open  soap           syn-ack ttl 64 gSOAP 2.7[0m
+[0m[94m| http-server-header: [0m
+[0m[94m|   Virata-EmWeb/R6_2_1[0m
+[0m[94m|_  gSOAP/2.7[0m
+[0m[94m| http-methods: [0m
+[0m[94m|_  Supported Methods: HEAD[0m
+[0m[92m[1m9100/tcp open  jetdirect?     syn-ack ttl 64[0m
+[0mMAC Address: [95m6C:C2:17:24:11:55[0m (Hewlett Packard)
+[0mDevice type: VoIP adapter|printer|specialized|general purpose
+[0mRunning: AudioCodes embedded, Brother embedded, Keyence embedded, Wind River VxWorks, HP embedded, Vocality embedded
+[0mOS CPE: cpe:/h:brother:hl-2270dw cpe:/h:keyence:cv-x150f cpe:/o:windriver:vxworks
+[0m[93mOS details: Audiocodes MP-1XX-series VoIP adapter or Brother HL-2270DW printer, Keyence CV-X150F Image Sensor/Controller (VxWorks), VxWorks, VxWorks: HP printer or Vocality BASICS Four Wire VoIP gateway[0m
+[0mTCP/IP fingerprint:
+[0mOS:SCAN(V=7.98%E=4%D=5/13%OT=21%CT=1%CU=38249%PV=Y%DS=1%DC=D%G=Y%M=6CC217%T
+[0mOS:M=6A04D217%P=i686-pc-windows-windows)SEQ()OPS(O1=M5B4NW0NNSNNT11%O2=M578
+[0mOS:NW0NNSNNT11%O3=M280NW0NNT11%O4=M5B4NW0NNSNNT11%O5=M218NW0NNSNNT11%O6=M10
+[0mOS:9NNSNNT11)WIN(W1=21F0%W2=2088%W3=2258%W4=21F0%W5=20C0%W6=209D)ECN(R=Y%DF
+[0mOS:=N%T=40%W=2238%O=M5B4NW0NNS%CC=N%Q=)T1(R=Y%DF=N%T=40%S=O%A=S+%F=AS%RD=0%
+[0mOS:Q=)T2(R=N)T3(R=N)T4(R=Y%DF=N%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=N
+[0mOS:%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=N%T=40%W=0%S=A%A=Z%F=R%O=%R
+[0mOS:D=0%Q=)T7(R=Y%DF=N%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=FF%IP
+[0mOS:L=38%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=FF%CD=S)
 [0m
-[0mHost script results:
-[0m[94m|_clock-skew: -2s[0m
+[0mNetwork Distance: 1 hop
+[0mService Info: OS: Unix; Device: printer
 [0m
-[0mTRACEROUTE (using port 80/tcp)
-[0mHOP RTT       ADDRESS
-[0m1   1.00 ms   [95m192.168.1.1[0m
-[0m2   196.00 ms [95m10.65.32.1[0m
-[0m3   7.00 ms   [95m10.45.11.74[0m
-[0m4   ... 7
-[0m8   83.00 ms  ae2.3601.edge5.ber1.neo.colt.net ([95m171.75.8.27[0m)
-[0m9   75.00 ms  [95m212.162.9.98[0m
-[0m10  76.00 ms  lo-0-0.rc-a.rs.ber.de.net.ionos.com ([95m212.227.117.204[0m)
-[0m11  ... 12
-[0m13  76.00 ms  [95m85.215.109.65[0m
+[0mTRACEROUTE
+[0mHOP RTT      ADDRESS
+[0m1   65.21 ms [95m192.168.1.124[0m
 [0m
+[0m[96mNSE: Script Post-scanning.[0m
+[0m[96mNSE: Starting runlevel 1 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:33[0m
+[0m[96mCompleted NSE at 22:33, 0.00s elapsed[0m
+[0m[96mNSE: Starting runlevel 2 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:33[0m
+[0m[96mCompleted NSE at 22:33, 0.00s elapsed[0m
+[0m[96mNSE: Starting runlevel 3 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:33[0m
+[0m[96mCompleted NSE at 22:33, 0.00s elapsed[0m
+[0mRead data files from: D:\Nmap
 [0mOS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-[0m[96m[1mNmap done: 1 IP address (1 host up) scanned in 76.73 seconds[0m
+[0m[96m[1mNmap done: 1 IP address (1 host up) scanned in 29.91 seconds[0m
+[0m           Raw packets sent: 1023 (45.806KB) | Rcvd: 1022 (41.326KB)
 [0m

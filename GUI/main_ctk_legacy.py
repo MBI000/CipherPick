@@ -26,7 +26,7 @@ except ImportError as e:
 BG_COLOR = "#000000"
 FG_GREEN = "#00FF00"
 HOVER_GREEN = "#00CC00"
-DARK_GREY = "#111111"
+DARK_GREY = "#0d1117"
 
 FONT_MAIN = ("Consolas", 12)
 FONT_HEADER = ("Consolas", 16, "bold")

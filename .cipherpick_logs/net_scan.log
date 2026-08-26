@@ -1,0 +1,307 @@
+[1;36m### Executing: nmap -A -sV -O --script vuln --script vulners --script http-enum --script http-headers --script http-methods --script ssl-cert -v -T4 -oX .cipherpick_logs/nmap_out.xml 52.112.213.48 ###[0m
+
+[96mStarting Nmap 7.98 ( https://nmap.org ) at 2026-08-26 15:23 +0300[0m
+[96mNSE: Loaded 155 scripts for scanning.[0m
+[96mNSE: Script Pre-scanning.[0m
+[96mInitiating NSE at 15:23[0m
+[96mCompleted NSE at 15:23, 10.03s elapsed[0m
+[96mInitiating NSE at 15:23[0m
+[96mCompleted NSE at 15:23, 0.00s elapsed[0m
+[96mInitiating Ping Scan at 15:23[0m
+[96mScanning [95m52.112.213.48[0m [4 ports][0m
+[96mCompleted Ping Scan at 15:23, 0.06s elapsed (1 total hosts)[0m
+[96mInitiating Parallel DNS resolution of 1 host. at 15:23[0m
+[96mCompleted Parallel DNS resolution of 1 host. at 15:23, 0.51s elapsed[0m
+[96mInitiating SYN Stealth Scan at 15:23[0m
+[96mScanning [95m52.112.213.48[0m [1000 ports][0m
+[92m[1mDiscovered open port 443/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 50000/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 55055/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 50002/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 50800/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 52822/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 57294/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 55056/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 54045/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 52848/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 51493/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 52869/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 55555/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 56737/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 50389/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 50006/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 57797/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 56738/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 58080/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 50300/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 49999/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 51103/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 50003/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 55600/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 50001/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 50636/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 50500/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 54328/tcp on [95m52.112.213.48[0m[0m
+[92m[1mDiscovered open port 52673/tcp on [95m52.112.213.48[0m[0m
+[96mCompleted SYN Stealth Scan at 15:24, 4.95s elapsed (1000 total ports)[0m
+[96mInitiating Service scan at 15:24[0m
+[96mScanning 29 services on [95m52.112.213.48[0m[0m
+[96mCompleted Service scan at 15:25, 96.32s elapsed (29 services on 1 host)[0m
+[96mInitiating OS detection (try #1) against [95m52.112.213.48[0m[0m
+[93mRetrying OS detection (try #2) against [95m52.112.213.48[0m[0m
+[96mInitiating Traceroute at 15:25[0m
+[96mCompleted Traceroute at 15:25, 6.12s elapsed[0m
+[96mInitiating Parallel DNS resolution of 6 hosts. at 15:25[0m
+[96mCompleted Parallel DNS resolution of 6 hosts. at 15:25, 3.52s elapsed[0m
+[96mNSE: Script scanning [95m52.112.213.48[0m.[0m
+[96mInitiating NSE at 15:25[0m
+[96mCompleted NSE at 15:28, 167.80s elapsed[0m
+[96mInitiating NSE at 15:28[0m
+[96mCompleted NSE at 15:28, 8.70s elapsed[0m
+[96m[1mNmap scan report for [95m52.112.213.48[0m[0m
+[92m[1mHost is up (0.063s latency).[0m
+[91mNot shown: 971 filtered tcp ports (no-response)[0m
+[96m[1mPORT      STATE SERVICE     VERSION[0m
+[92m[1m443/tcp   open  https[0m
+[94m| fingerprint-strings: [0m
+[94m|   FourOhFourRequest, GetRequest, HTTPOptions: [0m
+[94m|     HTTP/1.1 307 Temporary Redirect[0m
+[94m|     Via: 1.0 middlebox[0m
+[94m|     Location: http://megaplusredirection.tedata.net/VDSL-Redirection_100.html[0m
+[94m|_    Connection: close[0m
+[91m|_http-aspnet-debug: ERROR: Script execution failed (use -d to debug)[0m
+[94m| ssl-cert: Subject: commonName=tr.teams.microsoft.com/organizationName=Microsoft Corporation/stateOrProvinceName=WA/countryName=US/localityName=Redmond[0m
+[94m| Subject Alternative Name: DNS:tr.teams.microsoft.com, DNS:*.tr.teams.microsoft.com, DNS:turn.teams.microsoft.com, DNS:*.turn.teams.microsoft.com, DNS:*.relay.teams.microsoft.com, DNS:az.relay.teams.cloud.microsoft, DNS:*.az.relay.teams.cloud.microsoft, DNS:r0.az.relay.teams.microsoft.com, DNS:*.r0.az.relay.teams.microsoft.com, DNS:r0.az.relay.teams.cloud.microsoft, DNS:*.r0.az.relay.teams.cloud.microsoft, DNS:msit.az.relay.teams.microsoft.com, DNS:*.msit.az.relay.teams.microsoft.com, DNS:msit.az.relay.teams.cloud.microsoft, DNS:*.msit.az.relay.teams.cloud.microsoft[0m
+[94m| Issuer: commonName=Microsoft TLS G2 RSA CA OCSP 02/organizationName=Microsoft Corporation/countryName=US[0m
+[94m| Public Key type: rsa[0m
+[94m| Public Key bits: 2048[0m
+[94m| Signature Algorithm: sha384WithRSAEncryption[0m
+[94m| Not valid before: 2026-08-06T14:21:53[0m
+[94m| Not valid after:  2027-02-02T14:21:53[0m
+[94m| MD5:     8cdd a8dd 5d82 e651 b4cd 9e61 5197 ec92[0m
+[94m| SHA-1:   48f4 3240 7c22 5da8 3635 75b6 ca54 d2fa f1fb e8be[0m
+[94m| SHA-256: 936b 671c 7382 0bed 7c27 3180 2522 bc3c 273a d4d7 5cda b84f 205e cb13 0c92 8977[0m
+[94m| -----BEGIN CERTIFICATE-----[0m
+[94m| MIILDDCCCPSgAwIBAgITQQCkpzg91PEUPkgjBAAAAKSnODANBgkqhkiG9w0BAQwF[0m
+[94m| ADBXMQswCQYDVQQGEwJVUzEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9u[0m
+[94m| MSgwJgYDVQQDEx9NaWNyb3NvZnQgVExTIEcyIFJTQSBDQSBPQ1NQIDAyMB4XDTI2[0m
+[94m| MDgwNjE0MjE1M1oXDTI3MDIwMjE0MjE1M1owbTELMAkGA1UEBhMCVVMxCzAJBgNV[0m
+[94m| BAgTAldBMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29y[0m
+[94m| cG9yYXRpb24xHzAdBgNVBAMTFnRyLnRlYW1zLm1pY3Jvc29mdC5jb20wggEiMA0G[0m
+[94m| CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCsV7Zb/9cWBKF/0clxm2ehoIGxUASw[0m
+[94m| z6HSKpQdYvKJFqX5WU5BrSaB2gFYouefMMDDJnPWlNIrENd9RGbl8QwOZ3THh05K[0m
+[94m| Cjrus34eix+VKWiaUSf2L3/u8d2jAHwCvJqarO6pbWSE+IORqPXVX+Eq3E5wuHEV[0m
+[94m| 9sKQ+l81flFXa+a0dXNF3Ilfq/OMDpFK/vMwCm0lcbTmoE2zgjHq3yoYw4L8OkIo[0m
+[94m| 2hZHZ8lWF1KEc66Puudn7Uy2A/jaVLebC6AOnihdUX7uLLlFIcSCc2vQpcAbdGG2[0m
+[94m| vObUbbP5hH7ibWbYCsBjB14kQP9/rgyJ7FNQQgnuX8qmMHZR61Ysmi3lAgMBAAGj[0m
+[94m| gga5MIIGtTCCAYAGCisGAQQB1nkCBAIEggFwBIIBbAFqAHYA1tWNqdAXU/NqSqDH[0m
+[94m| V0kCr+vH3CzTjNn3ZMgMiRkenwIAAAGf13z2CgAABAMARzBFAiEAvlBOL0+Nr85j[0m
+[94m| j3moI24OgyPj31wZ/q/W9slB+tYQaicCIEPuhCHKl87v3OwiEx3HNjlWcNqAEb0q[0m
+[94m| FL+o1spF23ayAHcAABpdGhwtk3W2SFV4+C9xoa5u7zl9KXyK4xV7yt7hoB4AAAGf[0m
+[94m| 13z18QAABAMASDBGAiEAgQVjxO/p7WAX0yJO5+qWCn4EYD6nb7PYF3PGzPfks/wC[0m
+[94m| IQDhjOuAtsch2gWJJfJzxEmoWK05MM6te7/S20dA4cXfugB3AByfaCzp+vBFaVD4[0m
+[94m| G5aKh93bMhDYTObIsuOCUkrEz1mfAAABn9d89hAAAAQDAEgwRgIhANO8LDC3Y70a[0m
+[94m| NMmAB4cDW/x6o96rF6uuCfRGOYMZw7KfAiEAt7Kl93hFuNphdInAi5e9T990ogTK[0m
+[94m| T3eawBlzGNiHll4wGwYJKwYBBAGCNxUKBA4wDDAKBggrBgEFBQcDATA8BgkrBgEE[0m
+[94m| AYI3FQcELzAtBiUrBgEEAYI3FQiHvdcbgefrRoKBnS6O0AyH8NodXYPpw2eCtKNM[0m
+[94m| AgFkAgEgMIIBCwYIKwYBBQUHAQEEgf4wgfswYQYIKwYBBQUHMAKGVWh0dHA6Ly93[0m
+[94m| d3cubWljcm9zb2Z0LmNvbS9wa2lvcHMvY2VydHMvTWljcm9zb2Z0JTIwVExTJTIw[0m
+[94m| RzIlMjBSU0ElMjBDQSUyME9DU1AlMjAwMi5jcnQwZwYIKwYBBQUHMAKGW2h0dHA6[0m
+[94m| Ly9jYWlzc3VlcnMubWljcm9zb2Z0LmNvbS9wa2lvcHMvY2VydHMvTWljcm9zb2Z0[0m
+[94m| JTIwVExTJTIwRzIlMjBSU0ElMjBDQSUyME9DU1AlMjAwMi5jcnQwLQYIKwYBBQUH[0m
+[94m| MAGGIWh0dHA6Ly9vbmVvY3NwLm1pY3Jvc29mdC5jb20vb2NzcDAdBgNVHQ4EFgQU[0m
+[94m| nxJ9qwvVHVZU/P9T1jRlU3/faaIwDgYDVR0PAQH/BAQDAgWgMIIB9AYDVR0RBIIB[0m
+[94m| 6zCCAeeCFnRyLnRlYW1zLm1pY3Jvc29mdC5jb22CGCoudHIudGVhbXMubWljcm9z[0m
+[94m| b2Z0LmNvbYIYdHVybi50ZWFtcy5taWNyb3NvZnQuY29tghoqLnR1cm4udGVhbXMu[0m
+[94m| bWljcm9zb2Z0LmNvbYIbKi5yZWxheS50ZWFtcy5taWNyb3NvZnQuY29tgh5hei5y[0m
+[94m| ZWxheS50ZWFtcy5jbG91ZC5taWNyb3NvZnSCICouYXoucmVsYXkudGVhbXMuY2xv[0m
+[94m| dWQubWljcm9zb2Z0gh9yMC5hei5yZWxheS50ZWFtcy5taWNyb3NvZnQuY29tgiEq[0m
+[94m| LnIwLmF6LnJlbGF5LnRlYW1zLm1pY3Jvc29mdC5jb22CIXIwLmF6LnJlbGF5LnRl[0m
+[94m| YW1zLmNsb3VkLm1pY3Jvc29mdIIjKi5yMC5hei5yZWxheS50ZWFtcy5jbG91ZC5t[0m
+[94m| aWNyb3NvZnSCIW1zaXQuYXoucmVsYXkudGVhbXMubWljcm9zb2Z0LmNvbYIjKi5t[0m
+[94m| c2l0LmF6LnJlbGF5LnRlYW1zLm1pY3Jvc29mdC5jb22CI21zaXQuYXoucmVsYXku[0m
+[94m| dGVhbXMuY2xvdWQubWljcm9zb2Z0giUqLm1zaXQuYXoucmVsYXkudGVhbXMuY2xv[0m
+[94m| dWQubWljcm9zb2Z0MAwGA1UdEwEB/wQCMAAwgfEGA1UdHwSB6TCB5jCB46CB4KCB[0m
+[94m| 3YZsaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraW9wcy9jcmwvcGFydGl0aW9u[0m
+[94m| L01pY3Jvc29mdCUyMFRMUyUyMEcyJTIwUlNBJTIwQ0ElMjBPQ1NQJTIwMDJfUGFy[0m
+[94m| dGl0aW9uMDAwMjkuY3Jshm1odHRwOi8vY3JsMi5taWNyb3NvZnQuY29tL3BraW9w[0m
+[94m| cy9jcmwvcGFydGl0aW9uL01pY3Jvc29mdCUyMFRMUyUyMEcyJTIwUlNBJTIwQ0El[0m
+[94m| MjBPQ1NQJTIwMDJfUGFydGl0aW9uMDAwMjkuY3JsMGYGA1UdIARfMF0wCAYGZ4EM[0m
+[94m| AQICMFEGDCsGAQQBgjdMg30BATBBMD8GCCsGAQUFBwIBFjNodHRwOi8vd3d3Lm1p[0m
+[94m| Y3Jvc29mdC5jb20vcGtpb3BzL0RvY3MvUmVwb3NpdG9yeS5odG0wHwYDVR0jBBgw[0m
+[94m| FoAUuC8zpnxRT38fLdXIFUI4pLIOjy8wEwYDVR0lBAwwCgYIKwYBBQUHAwEwDQYJ[0m
+[94m| KoZIhvcNAQEMBQADggIBAI6AixmBwjPZW0QF4cGKoDQmbpUAkT+s4M6pbMZr92sG[0m
+[94m| 4UqCsE9lnIA0li+xdQeKjH0ZjLBnTnWNxZuGbs3Sus4m9YgqXf39EyNnBZLgzIMn[0m
+[94m| 7242FVKQR9E7UU3GMTOddwVn6GCMvAPp/PnTfZEUcQRjvGNEPbOFO65Gpoo1GTRc[0m
+[94m| YfNZ+K7bZDH/VNgRn4EpPHpxdTkFSPwlnI/fplgXoG7MS/0dBG0HG6VodvrJiK5B[0m
+[94m| DntfLXBRGpqWxb8aSJxY3UORhvCA3c54Q4hJQtfixWg6v9ZjvPxyWKXZJ51LdfFZ[0m
+[94m| nZhKnoCgkzvaXseYXgopk1bRHZXTAFsD7j3cO8dVeZM6cCJFRUE2Tz+/cdAwTjlN[0m
+[94m| Ur9c5msygs8jcD+cpNi8fSQjUsx1R/uW6GOuWKPHqfN9O7QopLDJE5N+BPCsT2+r[0m
+[94m| d9ymjmta/k8o+/LEDEQGa1k9R5BsU2AXc6RT0T/tHqbd2+nJGD8KboQ2puJbDZMQ[0m
+[94m| P26nTLELHeOOI02GTusXDxH82M4TEnM+/eLBxC8U7ho7dvLbrp7lWX0orpDmx4Xf[0m
+[94m| lpXdfABlJJKtJgyD3YRj0M2SnStGktP87ZiCMUGIkL2cMcfMpgaDNnywoz24klea[0m
+[94m| vdbuusRNvTUaZ1l7WuLuxbn/6iEnzKNJfH/OlIu8A2OQMdq5FLcydnqKsOOgaXOY[0m
+[94m|_-----END CERTIFICATE-----[0m
+[94m|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.[0m
+[94m|_http-dombased-xss: Couldn't find any DOM based XSS.[0m
+[94m| http-methods: [0m
+[94m|_  Supported Methods: GET HEAD POST OPTIONS[0m
+[94m| http-slowloris-check: [0m
+[94m|   VULNERABLE:[0m
+[94m|   Slowloris DOS attack[0m
+[94m|     State: LIKELY VULNERABLE[0m
+[94m|     IDs:  CVE:CVE-2007-6750[0m
+[94m|       Slowloris tries to keep many connections to the target web server open and hold[0m
+[94m|       them open as long as possible.  It accomplishes this by opening connections to[0m
+[94m|       the target web server and sending a partial request. By doing so, it starves[0m
+[94m|       the http server's resources causing Denial Of Service.[0m
+[94m|       [0m
+[94m|     Disclosure date: 2009-09-17[0m
+[94m|     References:[0m
+[94m|       http://ha.ckers.org/slowloris/[0m
+[94m|_      https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750[0m
+[94m|_http-csrf: Couldn't find any CSRF vulnerabilities.[0m
+[94m| http-headers: [0m
+[94m|   Via: 1.0 middlebox[0m
+[94m|   Location: http://megaplusredirection.tedata.net/VDSL-Redirection_100.html[0m
+[94m|   Connection: close[0m
+[94m|   [0m
+[94m|_  (Request type: GET)[0m
+[92m[1m49999/tcp open  ssl/unknown[0m
+[94m| ssl-cert: Subject: commonName=tr.teams.microsoft.com/organizationName=Microsoft Corporation/stateOrProvinceName=WA/countryName=US/localityName=Redmond[0m
+[94m| Subject Alternative Name: DNS:tr.teams.microsoft.com, DNS:*.tr.teams.microsoft.com, DNS:turn.teams.microsoft.com, DNS:*.turn.teams.microsoft.com, DNS:*.relay.teams.microsoft.com, DNS:az.relay.teams.cloud.microsoft, DNS:*.az.relay.teams.cloud.microsoft, DNS:r0.az.relay.teams.microsoft.com, DNS:*.r0.az.relay.teams.microsoft.com, DNS:r0.az.relay.teams.cloud.microsoft, DNS:*.r0.az.relay.teams.cloud.microsoft, DNS:msit.az.relay.teams.microsoft.com, DNS:*.msit.az.relay.teams.microsoft.com, DNS:msit.az.relay.teams.cloud.microsoft, DNS:*.msit.az.relay.teams.cloud.microsoft[0m
+[94m| Issuer: commonName=Microsoft TLS G2 RSA CA OCSP 02/organizationName=Microsoft Corporation/countryName=US[0m
+[94m| Public Key type: rsa[0m
+[94m| Public Key bits: 2048[0m
+[94m| Signature Algorithm: sha384WithRSAEncryption[0m
+[94m| Not valid before: 2026-08-06T14:21:53[0m
+[94m| Not valid after:  2027-02-02T14:21:53[0m
+[94m| MD5:     8cdd a8dd 5d82 e651 b4cd 9e61 5197 ec92[0m
+[94m| SHA-1:   48f4 3240 7c22 5da8 3635 75b6 ca54 d2fa f1fb e8be[0m
+[94m| SHA-256: 936b 671c 7382 0bed 7c27 3180 2522 bc3c 273a d4d7 5cda b84f 205e cb13 0c92 8977[0m
+[94m| -----BEGIN CERTIFICATE-----[0m
+[94m| MIILDDCCCPSgAwIBAgITQQCkpzg91PEUPkgjBAAAAKSnODANBgkqhkiG9w0BAQwF[0m
+[94m| ADBXMQswCQYDVQQGEwJVUzEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9u[0m
+[94m| MSgwJgYDVQQDEx9NaWNyb3NvZnQgVExTIEcyIFJTQSBDQSBPQ1NQIDAyMB4XDTI2[0m
+[94m| MDgwNjE0MjE1M1oXDTI3MDIwMjE0MjE1M1owbTELMAkGA1UEBhMCVVMxCzAJBgNV[0m
+[94m| BAgTAldBMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29y[0m
+[94m| cG9yYXRpb24xHzAdBgNVBAMTFnRyLnRlYW1zLm1pY3Jvc29mdC5jb20wggEiMA0G[0m
+[94m| CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCsV7Zb/9cWBKF/0clxm2ehoIGxUASw[0m
+[94m| z6HSKpQdYvKJFqX5WU5BrSaB2gFYouefMMDDJnPWlNIrENd9RGbl8QwOZ3THh05K[0m
+[94m| Cjrus34eix+VKWiaUSf2L3/u8d2jAHwCvJqarO6pbWSE+IORqPXVX+Eq3E5wuHEV[0m
+[94m| 9sKQ+l81flFXa+a0dXNF3Ilfq/OMDpFK/vMwCm0lcbTmoE2zgjHq3yoYw4L8OkIo[0m
+[94m| 2hZHZ8lWF1KEc66Puudn7Uy2A/jaVLebC6AOnihdUX7uLLlFIcSCc2vQpcAbdGG2[0m
+[94m| vObUbbP5hH7ibWbYCsBjB14kQP9/rgyJ7FNQQgnuX8qmMHZR61Ysmi3lAgMBAAGj[0m
+[94m| gga5MIIGtTCCAYAGCisGAQQB1nkCBAIEggFwBIIBbAFqAHYA1tWNqdAXU/NqSqDH[0m
+[94m| V0kCr+vH3CzTjNn3ZMgMiRkenwIAAAGf13z2CgAABAMARzBFAiEAvlBOL0+Nr85j[0m
+[94m| j3moI24OgyPj31wZ/q/W9slB+tYQaicCIEPuhCHKl87v3OwiEx3HNjlWcNqAEb0q[0m
+[94m| FL+o1spF23ayAHcAABpdGhwtk3W2SFV4+C9xoa5u7zl9KXyK4xV7yt7hoB4AAAGf[0m
+[94m| 13z18QAABAMASDBGAiEAgQVjxO/p7WAX0yJO5+qWCn4EYD6nb7PYF3PGzPfks/wC[0m
+[94m| IQDhjOuAtsch2gWJJfJzxEmoWK05MM6te7/S20dA4cXfugB3AByfaCzp+vBFaVD4[0m
+[94m| G5aKh93bMhDYTObIsuOCUkrEz1mfAAABn9d89hAAAAQDAEgwRgIhANO8LDC3Y70a[0m
+[94m| NMmAB4cDW/x6o96rF6uuCfRGOYMZw7KfAiEAt7Kl93hFuNphdInAi5e9T990ogTK[0m
+[94m| T3eawBlzGNiHll4wGwYJKwYBBAGCNxUKBA4wDDAKBggrBgEFBQcDATA8BgkrBgEE[0m
+[94m| AYI3FQcELzAtBiUrBgEEAYI3FQiHvdcbgefrRoKBnS6O0AyH8NodXYPpw2eCtKNM[0m
+[94m| AgFkAgEgMIIBCwYIKwYBBQUHAQEEgf4wgfswYQYIKwYBBQUHMAKGVWh0dHA6Ly93[0m
+[94m| d3cubWljcm9zb2Z0LmNvbS9wa2lvcHMvY2VydHMvTWljcm9zb2Z0JTIwVExTJTIw[0m
+[94m| RzIlMjBSU0ElMjBDQSUyME9DU1AlMjAwMi5jcnQwZwYIKwYBBQUHMAKGW2h0dHA6[0m
+[94m| Ly9jYWlzc3VlcnMubWljcm9zb2Z0LmNvbS9wa2lvcHMvY2VydHMvTWljcm9zb2Z0[0m
+[94m| JTIwVExTJTIwRzIlMjBSU0ElMjBDQSUyME9DU1AlMjAwMi5jcnQwLQYIKwYBBQUH[0m
+[94m| MAGGIWh0dHA6Ly9vbmVvY3NwLm1pY3Jvc29mdC5jb20vb2NzcDAdBgNVHQ4EFgQU[0m
+[94m| nxJ9qwvVHVZU/P9T1jRlU3/faaIwDgYDVR0PAQH/BAQDAgWgMIIB9AYDVR0RBIIB[0m
+[94m| 6zCCAeeCFnRyLnRlYW1zLm1pY3Jvc29mdC5jb22CGCoudHIudGVhbXMubWljcm9z[0m
+[94m| b2Z0LmNvbYIYdHVybi50ZWFtcy5taWNyb3NvZnQuY29tghoqLnR1cm4udGVhbXMu[0m
+[94m| bWljcm9zb2Z0LmNvbYIbKi5yZWxheS50ZWFtcy5taWNyb3NvZnQuY29tgh5hei5y[0m
+[94m| ZWxheS50ZWFtcy5jbG91ZC5taWNyb3NvZnSCICouYXoucmVsYXkudGVhbXMuY2xv[0m
+[94m| dWQubWljcm9zb2Z0gh9yMC5hei5yZWxheS50ZWFtcy5taWNyb3NvZnQuY29tgiEq[0m
+[94m| LnIwLmF6LnJlbGF5LnRlYW1zLm1pY3Jvc29mdC5jb22CIXIwLmF6LnJlbGF5LnRl[0m
+[94m| YW1zLmNsb3VkLm1pY3Jvc29mdIIjKi5yMC5hei5yZWxheS50ZWFtcy5jbG91ZC5t[0m
+[94m| aWNyb3NvZnSCIW1zaXQuYXoucmVsYXkudGVhbXMubWljcm9zb2Z0LmNvbYIjKi5t[0m
+[94m| c2l0LmF6LnJlbGF5LnRlYW1zLm1pY3Jvc29mdC5jb22CI21zaXQuYXoucmVsYXku[0m
+[94m| dGVhbXMuY2xvdWQubWljcm9zb2Z0giUqLm1zaXQuYXoucmVsYXkudGVhbXMuY2xv[0m
+[94m| dWQubWljcm9zb2Z0MAwGA1UdEwEB/wQCMAAwgfEGA1UdHwSB6TCB5jCB46CB4KCB[0m
+[94m| 3YZsaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraW9wcy9jcmwvcGFydGl0aW9u[0m
+[94m| L01pY3Jvc29mdCUyMFRMUyUyMEcyJTIwUlNBJTIwQ0ElMjBPQ1NQJTIwMDJfUGFy[0m
+[94m| dGl0aW9uMDAwMjkuY3Jshm1odHRwOi8vY3JsMi5taWNyb3NvZnQuY29tL3BraW9w[0m
+[94m| cy9jcmwvcGFydGl0aW9uL01pY3Jvc29mdCUyMFRMUyUyMEcyJTIwUlNBJTIwQ0El[0m
+[94m| MjBPQ1NQJTIwMDJfUGFydGl0aW9uMDAwMjkuY3JsMGYGA1UdIARfMF0wCAYGZ4EM[0m
+[94m| AQICMFEGDCsGAQQBgjdMg30BATBBMD8GCCsGAQUFBwIBFjNodHRwOi8vd3d3Lm1p[0m
+[94m| Y3Jvc29mdC5jb20vcGtpb3BzL0RvY3MvUmVwb3NpdG9yeS5odG0wHwYDVR0jBBgw[0m
+[94m| FoAUuC8zpnxRT38fLdXIFUI4pLIOjy8wEwYDVR0lBAwwCgYIKwYBBQUHAwEwDQYJ[0m
+[94m| KoZIhvcNAQEMBQADggIBAI6AixmBwjPZW0QF4cGKoDQmbpUAkT+s4M6pbMZr92sG[0m
+[94m| 4UqCsE9lnIA0li+xdQeKjH0ZjLBnTnWNxZuGbs3Sus4m9YgqXf39EyNnBZLgzIMn[0m
+[94m| 7242FVKQR9E7UU3GMTOddwVn6GCMvAPp/PnTfZEUcQRjvGNEPbOFO65Gpoo1GTRc[0m
+[94m| YfNZ+K7bZDH/VNgRn4EpPHpxdTkFSPwlnI/fplgXoG7MS/0dBG0HG6VodvrJiK5B[0m
+[94m| DntfLXBRGpqWxb8aSJxY3UORhvCA3c54Q4hJQtfixWg6v9ZjvPxyWKXZJ51LdfFZ[0m
+[94m| nZhKnoCgkzvaXseYXgopk1bRHZXTAFsD7j3cO8dVeZM6cCJFRUE2Tz+/cdAwTjlN[0m
+[94m| Ur9c5msygs8jcD+cpNi8fSQjUsx1R/uW6GOuWKPHqfN9O7QopLDJE5N+BPCsT2+r[0m
+[94m| d9ymjmta/k8o+/LEDEQGa1k9R5BsU2AXc6RT0T/tHqbd2+nJGD8KboQ2puJbDZMQ[0m
+[94m| P26nTLELHeOOI02GTusXDxH82M4TEnM+/eLBxC8U7ho7dvLbrp7lWX0orpDmx4Xf[0m
+[94m| lpXdfABlJJKtJgyD3YRj0M2SnStGktP87ZiCMUGIkL2cMcfMpgaDNnywoz24klea[0m
+[94m| vdbuusRNvTUaZ1l7WuLuxbn/6iEnzKNJfH/OlIu8A2OQMdq5FLcydnqKsOOgaXOY[0m
+[94m|_-----END CERTIFICATE-----[0m
+[92m[1m50000/tcp open  tcpwrapped[0m
+[92m[1m50001/tcp open  tcpwrapped[0m
+[92m[1m50002/tcp open  tcpwrapped[0m
+[92m[1m50003/tcp open  tcpwrapped[0m
+[92m[1m50006/tcp open  tcpwrapped[0m
+[92m[1m50300/tcp open  tcpwrapped[0m
+[92m[1m50389/tcp open  tcpwrapped[0m
+[92m[1m50500/tcp open  tcpwrapped[0m
+[92m[1m50636/tcp open  tcpwrapped[0m
+[92m[1m50800/tcp open  tcpwrapped[0m
+[92m[1m51103/tcp open  tcpwrapped[0m
+[92m[1m51493/tcp open  tcpwrapped[0m
+[92m[1m52673/tcp open  tcpwrapped[0m
+[92m[1m52822/tcp open  tcpwrapped[0m
+[92m[1m52848/tcp open  tcpwrapped[0m
+[92m[1m52869/tcp open  tcpwrapped[0m
+[92m[1m54045/tcp open  tcpwrapped[0m
+[92m[1m54328/tcp open  tcpwrapped[0m
+[92m[1m55055/tcp open  tcpwrapped[0m
+[92m[1m55056/tcp open  tcpwrapped[0m
+[92m[1m55555/tcp open  tcpwrapped[0m
+[92m[1m55600/tcp open  tcpwrapped[0m
+[92m[1m56737/tcp open  tcpwrapped[0m
+[92m[1m56738/tcp open  tcpwrapped[0m
+[92m[1m57294/tcp open  tcpwrapped[0m
+[92m[1m57797/tcp open  tcpwrapped[0m
+[92m[1m58080/tcp open  tcpwrapped[0m
+[91m1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :[0m
+SF-Port443-TCP:V=7.98%I=7%D=8/26%Time=6A8EDAF9%P=i686-pc-windows-windows%r
+SF:(GetRequest,95,"HTTP/1\.1\x20307\x20Temporary\x20Redirect\r\nVia:\x201\
+SF:.0\x20middlebox\r\nLocation:\x20http://megaplusredirection\.tedata\.net
+SF:/VDSL-Redirection_100\.html\r\nConnection:\x20close\r\n\r\n")%r(HTTPOpt
+SF:ions,95,"HTTP/1\.1\x20307\x20Temporary\x20Redirect\r\nVia:\x201\.0\x20m
+SF:iddlebox\r\nLocation:\x20http://megaplusredirection\.tedata\.net/VDSL-R
+SF:edirection_100\.html\r\nConnection:\x20close\r\n\r\n")%r(FourOhFourRequ
+SF:est,95,"HTTP/1\.1\x20307\x20Temporary\x20Redirect\r\nVia:\x201\.0\x20mi
+SF:ddlebox\r\nLocation:\x20http://megaplusredirection\.tedata\.net/VDSL-Re
+SF:direction_100\.html\r\nConnection:\x20close\r\n\r\n");
+[93mWarning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port[0m
+[91mOS fingerprint not ideal because: Missing a closed TCP port so results incomplete[0m
+No OS matches for host
+Uptime guess: 3.311 days (since Sun Aug 23 08:00:41 2026)
+Network Distance: 24 hops
+TCP Sequence Prediction: Difficulty=259 (Good luck!)
+IP ID Sequence Generation: Incremental
+
+TRACEROUTE (using port 443/tcp)
+HOP RTT       ADDRESS
+1   2.00 ms   [95m192.168.1.1[0m
+2   7.00 ms   [95m10.65.32.1[0m
+3   199.00 ms [95m10.45.11.75[0m
+4   8.00 ms   [95m10.38.82.13[0m
+5   14.00 ms  ae60-10.ier02.cai30.ntwk.msn.net ([95m104.44.36.216[0m)
+6   ... 23
+24  62.00 ms  [95m52.112.213.48[0m
+
+[96mNSE: Script Post-scanning.[0m
+[96mInitiating NSE at 15:28[0m
+[96mCompleted NSE at 15:28, 0.00s elapsed[0m
+[96mInitiating NSE at 15:28[0m
+[96mCompleted NSE at 15:28, 0.00s elapsed[0m
+[96mRead data files from: D:\Nmap[0m
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+[96mNmap done: 1 IP address (1 host up) scanned in 307.59 seconds[0m
+           Raw packets sent: 2122 (98.480KB) | Rcvd: 182 (12.009KB)

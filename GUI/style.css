@@ -1,0 +1,431 @@
+/* ============================================================
+   CipherPick — GTK+3 Dark Cyberpunk Theme
+   Loaded via Gtk.CssProvider at runtime
+   ============================================================ */
+
+/* ── Global Reset ─────────────────────────────────────────── */
+* {
+    font-family: "Consolas", "Courier New", monospace;
+    color: #c9d1d9;
+    background-color: transparent;
+    outline: none;
+    border-radius: 0;
+    transition: all 150ms ease;
+}
+
+window, .background {
+    background-color: #0a0a0c;
+    color: #c9d1d9;
+}
+
+/* ── Header Bar ───────────────────────────────────────────── */
+headerbar {
+    background: linear-gradient(to bottom, #0d1117, #080c12);
+    border-bottom: 1px solid #1c2333;
+    color: #00f2ff;
+    min-height: 46px;
+    padding: 0 12px;
+}
+headerbar .title {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 15pt;
+    font-weight: bold;
+    color: #00f2ff;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px rgba(0,242,255,0.6);
+}
+headerbar .subtitle {
+    font-size: 8pt;
+    color: #445566;
+    letter-spacing: 2px;
+}
+headerbar button {
+    background: transparent;
+    border: 1px solid rgba(0,242,255,0.25);
+    color: #00f2ff;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+headerbar button:hover {
+    background: rgba(0,242,255,0.1);
+    border-color: #00f2ff;
+    box-shadow: 0 0 6px rgba(0,242,255,0.4);
+}
+
+/* ── Toolbar ──────────────────────────────────────────────── */
+.toolbar {
+    background: #080c12;
+    border-bottom: 1px solid #1c2333;
+    padding: 6px 12px;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────── */
+.sidebar {
+    background: #080c12;
+    border-right: 1px solid #1c2333;
+    min-width: 200px;
+}
+.sidebar-header {
+    font-size: 8pt;
+    color: #445566;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 14px 6px 14px;
+}
+.sidebar row {
+    padding: 0;
+    background: transparent;
+}
+.sidebar-item {
+    padding: 10px 14px;
+    color: #8b9bab;
+    font-size: 11pt;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    margin: 2px 6px;
+}
+.sidebar-item:hover {
+    background: rgba(0,242,255,0.07);
+    border-color: rgba(0,242,255,0.2);
+    color: #c9d1d9;
+}
+.sidebar row:selected .sidebar-item,
+.sidebar row:selected .sidebar-item * {
+    background: rgba(0,242,255,0.12);
+    border-color: #00f2ff;
+    color: #00f2ff;
+    box-shadow: 0 0 8px rgba(0,242,255,0.15);
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+button {
+    background: transparent;
+    border: 1px solid #00f2ff;
+    color: #00f2ff;
+    padding: 6px 18px;
+    font-size: 10pt;
+    font-family: "Consolas", monospace;
+    border-radius: 4px;
+}
+button:hover {
+    background: rgba(0,242,255,0.12);
+    box-shadow: 0 0 10px rgba(0,242,255,0.35);
+}
+button:active {
+    background: rgba(0,242,255,0.22);
+}
+button.destructive-action {
+    border-color: #ff003c;
+    color: #ff003c;
+}
+button.destructive-action:hover {
+    background: rgba(255,0,60,0.12);
+    box-shadow: 0 0 8px rgba(255,0,60,0.3);
+}
+button.suggested-action {
+    background: rgba(0,242,255,0.15);
+    border-color: #00f2ff;
+    color: #00f2ff;
+    font-weight: bold;
+}
+button.suggested-action:hover {
+    background: rgba(0,242,255,0.28);
+    box-shadow: 0 0 14px rgba(0,242,255,0.5);
+}
+
+/* ── Text Entries ─────────────────────────────────────────── */
+entry {
+    background: #111118;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    padding: 6px 10px;
+    caret-color: #00f2ff;
+    border-radius: 4px;
+}
+entry:focus {
+    border-color: #00f2ff;
+    box-shadow: 0 0 6px rgba(0,242,255,0.3);
+}
+entry selection {
+    background: rgba(0,242,255,0.25);
+}
+
+/* ── ComboBox ─────────────────────────────────────────────── */
+combobox button {
+    background: #111118;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    padding: 5px 10px;
+}
+combobox button:hover {
+    border-color: #00f2ff;
+    background: #111118;
+}
+combobox .arrow {
+    color: #00f2ff;
+}
+.combo-entry {
+    background: #111118;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+}
+
+/* ── Notebook / Tabs ──────────────────────────────────────── */
+notebook {
+    background: #0a0a0c;
+}
+notebook header {
+    background: #080c12;
+    border-bottom: 1px solid #1c2333;
+}
+notebook tab {
+    background: transparent;
+    color: #445566;
+    padding: 8px 14px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 10pt;
+}
+notebook tab:hover {
+    color: #8b9bab;
+    background: rgba(0,242,255,0.05);
+}
+notebook tab:checked {
+    color: #00f2ff;
+    border-bottom-color: #00f2ff;
+    background: rgba(0,242,255,0.06);
+}
+
+/* ── TreeView ─────────────────────────────────────────────── */
+treeview {
+    background: #0d1117;
+    color: #8b9bab;
+    font-family: "Consolas", monospace;
+    font-size: 10pt;
+}
+treeview:hover {
+    background: rgba(0,242,255,0.04);
+}
+treeview:selected {
+    background: rgba(0,242,255,0.15);
+    color: #00f2ff;
+}
+treeview header button {
+    background: #080c12;
+    border: none;
+    border-right: 1px solid #1c2333;
+    border-bottom: 1px solid #1c2333;
+    color: #445566;
+    font-size: 9pt;
+    letter-spacing: 1px;
+    padding: 6px 10px;
+    text-transform: uppercase;
+}
+treeview header button:hover {
+    background: rgba(0,242,255,0.07);
+    color: #8b9bab;
+}
+
+/* ── ScrolledWindow / Scrollbar ───────────────────────────── */
+scrolledwindow {
+    background: transparent;
+}
+scrollbar {
+    background: #0d1117;
+    border: none;
+    min-width: 6px;
+    min-height: 6px;
+}
+scrollbar slider {
+    background: #30363d;
+    border-radius: 3px;
+    min-width: 6px;
+    min-height: 20px;
+}
+scrollbar slider:hover {
+    background: #00f2ff;
+}
+
+/* ── Paned Separator ──────────────────────────────────────── */
+paned separator {
+    background: #1c2333;
+    min-width: 4px;
+    min-height: 4px;
+}
+paned separator:hover {
+    background: #00f2ff;
+}
+
+/* ── TextView (Terminal Output) ───────────────────────────── */
+textview {
+    background: #0a0a0c;
+    color: #c9d1d9;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 10pt;
+}
+textview text {
+    background: #0a0a0c;
+    color: #c9d1d9;
+}
+textview text selection {
+    background: rgba(0,242,255,0.2);
+}
+
+/* ── Output Pane ──────────────────────────────────────────── */
+.output-pane {
+    background: #0a0a0c;
+    border-top: 1px solid #1c2333;
+}
+.output-header {
+    background: #080c12;
+    border-bottom: 1px solid #1c2333;
+    padding: 4px 12px;
+    color: #445566;
+    font-size: 8pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ── Status / Info Labels ─────────────────────────────────── */
+.status-active {
+    color: #00ff00;
+}
+.status-label {
+    font-size: 9pt;
+    color: #445566;
+}
+.cmd-bar {
+    background: #0a0a0c;
+    border: 1px solid #30363d;
+    color: #00f2ff;
+    font-family: "Consolas", monospace;
+    font-size: 10pt;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+.section-title {
+    color: #00f2ff;
+    font-size: 13pt;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.kv-key {
+    color: #8b9bab;
+    font-size: 10pt;
+}
+.kv-val {
+    color: #c9d1d9;
+    font-weight: bold;
+    font-size: 10pt;
+}
+.detail-card {
+    background: rgba(0,242,255,0.04);
+    border: 1px solid rgba(0,242,255,0.15);
+    border-radius: 6px;
+    padding: 12px;
+}
+.host-item {
+    background: #0d1117;
+    border: 1px solid #1c2333;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 3px 6px;
+    color: #8b9bab;
+    font-size: 10pt;
+}
+.host-item:hover {
+    background: rgba(0,242,255,0.06);
+    border-color: rgba(0,242,255,0.25);
+    color: #c9d1d9;
+}
+.host-item.selected {
+    background: rgba(0,242,255,0.10);
+    border-color: rgba(0,242,255,0.35);
+    color: #00f2ff;
+}
+.scan-history-row {
+    background: rgba(252,226,5,0.06);
+    border: 1px solid rgba(252,226,5,0.15);
+    border-radius: 4px;
+    color: #fce205;
+    font-size: 9pt;
+    padding: 6px 10px;
+    margin: 2px 4px;
+}
+.separator {
+    background: #1c2333;
+    min-height: 1px;
+}
+.progress-bar {
+    background: rgba(0,242,255,0.15);
+    border: 1px solid #00f2ff;
+}
+progressbar trough {
+    background: #111118;
+    border: 1px solid #30363d;
+    border-radius: 2px;
+    min-height: 6px;
+}
+progressbar progress {
+    background: linear-gradient(to right, #00f2ff, #025cf7);
+    border-radius: 2px;
+}
+
+/* ── Frame / LabelFrame ───────────────────────────────────── */
+frame {
+    border: 1px solid #1c2333;
+    border-radius: 6px;
+    padding: 4px;
+}
+frame > border {
+    border: 1px solid #1c2333;
+}
+label.frame-label {
+    color: #445566;
+    font-size: 8pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 6px;
+}
+
+/* ── CheckButton ──────────────────────────────────────────── */
+checkbutton {
+    color: #8b9bab;
+}
+checkbutton check {
+    background: #111118;
+    border: 1px solid #30363d;
+}
+checkbutton:checked check {
+    background: rgba(0,242,255,0.2);
+    border-color: #00f2ff;
+    color: #00f2ff;
+}
+
+/* ── Radio Button ─────────────────────────────────────────── */
+radiobutton {
+    color: #8b9bab;
+}
+radiobutton radio {
+    background: #111118;
+    border: 1px solid #30363d;
+}
+radiobutton:checked radio {
+    background: rgba(0,242,255,0.2);
+    border-color: #00f2ff;
+}
+
+/* ── Menu / Popover ───────────────────────────────────────── */
+menu, popover {
+    background: #0d1117;
+    border: 1px solid #1c2333;
+}
+menuitem {
+    color: #8b9bab;
+    padding: 6px 14px;
+}
+menuitem:hover {
+    background: rgba(0,242,255,0.10);
+    color: #00f2ff;
+}

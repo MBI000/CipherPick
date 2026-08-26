@@ -1,0 +1,67 @@
+{
+  "snapshots": [
+    {
+      "timestamp": "2026-08-23 10:30:47",
+      "subnet": "52.112.213.48",
+      "host_count": 1,
+      "hosts": [
+        {
+          "ip": "192.168.1.1",
+          "mac": "d8:29:18:2e:f4:97",
+          "vendor": "HUAWEI TECHNOLOGIES CO.,LTD",
+          "hostname": "192.168.1.1",
+          "os": "Linux",
+          "os_hint": "linux/macos",
+          "role": "gateway",
+          "open_ports": [
+            80,
+            443,
+            53
+          ],
+          "primary_service": "HTTP",
+          "primary_port": "80",
+          "risk_level": "Medium Risk",
+          "risk_findings": [
+            {
+              "port": 80,
+              "service": "HTTP",
+              "severity": "Medium",
+              "description": "Unencrypted Web Server (HTTP) without HTTPS enforced."
+            }
+          ],
+          "last_seen": "2026-08-23 10:30:47",
+          "summary": "192.168.1.1 \u2192 Linux \u2192 HTTP \u2192 80 \u2192 Medium Risk"
+        }
+      ]
+    }
+  ],
+  "current_assets": {
+    "192.168.1.1": {
+      "ip": "192.168.1.1",
+      "mac": "d8:29:18:2e:f4:97",
+      "vendor": "HUAWEI TECHNOLOGIES CO.,LTD",
+      "hostname": "192.168.1.1",
+      "os": "Linux",
+      "os_hint": "linux/macos",
+      "role": "gateway",
+      "open_ports": [
+        80,
+        443,
+        53
+      ],
+      "primary_service": "HTTP",
+      "primary_port": "80",
+      "risk_level": "Medium Risk",
+      "risk_findings": [
+        {
+          "port": 80,
+          "service": "HTTP",
+          "severity": "Medium",
+          "description": "Unencrypted Web Server (HTTP) without HTTPS enforced."
+        }
+      ],
+      "last_seen": "2026-08-23 10:30:47",
+      "summary": "192.168.1.1 \u2192 Linux \u2192 HTTP \u2192 80 \u2192 Medium Risk"
+    }
+  }
+}

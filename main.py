@@ -181,23 +181,33 @@ def digital_forensics_menu():
 def osint_menu():
     while True:
         print("\n--- OSINT and Information Gathering ---")
-        print("1. SQL Injector")
-        print("2. Port Scanner")
-        print("3. Username Hunter")
-        print("4. Back to Main Menu")
+        print("1. Host Discovery & Asset Inventory")
+        print("2. SQL Injector")
+        print("3. Port Scanner")
+        print("4. Username Hunter")
+        print("5. Back to Main Menu")
 
         choice = input("Select an option: ")
 
         if choice == '1':
+            subnet = input("\nEnter target subnet CIDR (or press ENTER for local subnet):\n> ")
+            from modules.scanner.asset_inventory import AssetInventory
+            inv = AssetInventory()
+            print("\n[+] Scanning subnet & enriching asset inventory...")
+            assets = inv.discover_and_save(subnet if subnet.strip() else None)
+            print(f"\n[+] Discovered {len(assets)} live hosts:")
+            for a in assets:
+                print(f"  • {a['summary']}")
+        elif choice == '2':
             url = input("\nEnter target URL for SQL testing:\n> ")
             print("\n[+] Starting SQLMap...")
             subprocess.run([sys.executable, "modules/sqlmap-master/sqlmap.py", "-u", url, "--batch"])
-        elif choice == '2':
-            PortScanner.advanced_scan()
         elif choice == '3':
+            PortScanner.advanced_scan()
+        elif choice == '4':
             username = input("\nEnter target username to hunt:\n> ")
             UsernameHunter(username).hunt()
-        elif choice == '4':
+        elif choice == '5':
             break
         else:
             print("\n[!] Invalid selection.")

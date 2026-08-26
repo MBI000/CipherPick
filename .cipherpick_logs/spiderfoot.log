@@ -1,0 +1,6 @@
+[96m[*] Starting SpiderFoot Scan for: 52.112.213.48[0m
+Traceback (most recent call last):
+  File "C:\Users\Mahmoud Basem\Desktop\CipherPick-V2\modules\spiderfoot\sf.py", line 25, in <module>
+    import cherrypy
+ModuleNotFoundError: No module named 'cherrypy'
+[92m[+] SpiderFoot Scan Completed.[0m

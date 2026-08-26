@@ -7,9 +7,11 @@ import time
 import io
 import re
 import contextlib
-import engine
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+
+import engine
+import network_scanner
 
 @contextlib.contextmanager
 def capture_stdout(placeholder=None, max_lines=15):
@@ -417,17 +419,27 @@ def render_page_header(section: str, tool: str):
     }
     icon = SECTION_ICONS.get(section, "🔐")
     st.markdown(
-        f'<div style="'
-        f'background:linear-gradient(90deg,rgba(0,242,255,0.06) 0%,rgba(0,0,0,0) 100%);'
-        f'border-left:3px solid #00f2ff;border-radius:0 6px 6px 0;'
-        f'padding:10px 20px;margin-bottom:18px;display:flex;align-items:center;gap:12px;">'
-        f'<span style="font-size:22px;">{icon}</span>'
-        f'<div>'
-        f'<div style="font-family:\'Courier New\',monospace;font-size:10px;color:#445566;'
-        f'letter-spacing:2px;text-transform:uppercase;">{section}</div>'
-        f'<div style="font-family:\'Courier New\',monospace;font-size:18px;font-weight:bold;'
-        f'color:#00f2ff;text-shadow:0 0 8px rgba(0,242,255,0.4);letter-spacing:1px;">{tool}</div>'
-        f'</div></div>',
+        f"""
+        <div style="background:linear-gradient(90deg,rgba(0,242,255,0.06) 0%,rgba(0,0,0,0) 100%);
+                    border-left:3px solid #00f2ff;border-radius:0 6px 6px 0;
+                    padding:10px 20px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <span style="font-size:22px;">{icon}</span>
+                <div>
+                    <div style="font-family:'Courier New',monospace;font-size:10px;color:#445566;
+                                letter-spacing:2px;text-transform:uppercase;">{section}</div>
+                    <div style="font-family:'Courier New',monospace;font-size:18px;font-weight:bold;
+                                color:#00f2ff;text-shadow:0 0 8px rgba(0,242,255,0.4);letter-spacing:1px;">{tool}</div>
+                </div>
+            </div>
+            <button onclick="window.parent.document.querySelector('[data-testid=\\'stSidebarCollapseButton\\']')?.click() || window.parent.document.querySelector('[data-testid=\\'collapsedControl\\']')?.click()" 
+                    style="background:transparent; border:1px solid #00f2ff; color:#00f2ff; padding:5px 12px; border-radius:5px; cursor:pointer; font-family:'Courier New',monospace; font-size:12px; transition:all 0.3s ease;" 
+                    onmouseover="this.style.background='#00f2ff'; this.style.color='#080c12'; this.style.boxShadow='0 0 10px #00f2ff';" 
+                    onmouseout="this.style.background='transparent'; this.style.color='#00f2ff'; this.style.boxShadow='none';">
+                ⛶ Toggle Full Screen
+            </button>
+        </div>
+        """,
         unsafe_allow_html=True
     )
 
@@ -621,10 +633,35 @@ def screen_forensics(option):
                     st.rerun()
 
 def screen_osint(option):
-    render_page_header("OSINT", option or "OSINT")
+    render_page_header("OSINT & Host Discovery", option or "OSINT")
     st.markdown("---")
     
-    if option == "SQL Injector":
+    if option == "Host Discovery & Asset Inventory":
+        task_id = "port_scanner"
+        if not render_running_task(task_id, "### Host Discovery & Asset Inventory Execution"):
+            subnet = st.text_input("Enter Subnet target (e.g. 192.168.1.0/24 or leave empty for local network):")
+            if st.button("Run Host Discovery"):
+                cmd = [sys.executable, "runner.py", "SubnetScan", json.dumps({"subnet": subnet})]
+                start_task(task_id, cmd)
+                st.rerun()
+
+    elif option == "Shodan OSINT Scanner":
+        task_id = "shodan"
+        if not render_running_task(task_id, "### Shodan OSINT Execution"):
+            c1, c2 = st.columns([3, 2])
+            with c1:
+                target = st.text_input("Enter Target IP or Hostname (e.g. 8.8.8.8 or example.com):")
+            with c2:
+                api_key = st.text_input("Shodan API Key:", value="6apjUWGhpborF2uwaC0AToSg5dVb3OQx", type="password")
+            if st.button("Run Shodan OSINT Lookup"):
+                if not target:
+                    st.error("Target IP/Domain is required.")
+                else:
+                    cmd = [sys.executable, "runner.py", "ShodanScan", json.dumps({"target": target, "api_key": api_key})]
+                    start_task(task_id, cmd)
+                    st.rerun()
+
+    elif option == "SQL Injector":
         task_id = "sql_injector"
         if not render_running_task(task_id, "### SQLMap Background Execution"):
             url = st.text_input("Enter target URL for SQL testing:")
@@ -634,31 +671,6 @@ def screen_osint(option):
                 else:
                     cmd = [sys.executable, "modules/sqlmap-master/sqlmap.py", "-u", url, "--batch", "--threads=5"]
                     start_task(task_id, cmd, cwd=os.path.dirname(os.path.abspath(__file__)))
-                    st.rerun()
-                        
-    elif option == "Port Scanner":
-        task_id = "port_scanner"
-        if not render_running_task(task_id, "### Port Scanner Background Execution"):
-            target = st.text_input("Enter target IP address or domain:")
-            ports = st.selectbox("Select ports for Phase 1 socket scan:", ["common", "all", "custom"])
-            if ports == "custom":
-                ports = st.text_input("Enter space-separated custom list:")
-                
-            only_open = st.checkbox("Show only open ports in Phase 1?")
-            
-            if st.button("Start Port Scan"):
-                if not target:
-                    st.error("Target required.")
-                else:
-                    port_list = []
-                    if ports == "all": port_list = list(range(1, 65536))
-                    elif ports == "common": port_list = [80, 443, 21, 22, 23, 25, 53, 110, 111, 135, 139, 143, 445, 993, 995, 1723, 3306, 3389, 5900, 8080]
-                    else: port_list = [int(p) for p in ports.split()]
-                        
-                    cmd = [sys.executable, "runner.py", "OptimizedPortScanner", json.dumps({
-                        "target": target, "ports": ports, "port_list": port_list, "only_open": only_open
-                    })]
-                    start_task(task_id, cmd)
                     st.rerun()
                         
     elif option == "Username Hunter":
@@ -822,6 +834,8 @@ def main():
         ("3. Digital Forensics"),
         ("4. OSINT and Information Gathering"),
         ("5. Cryptographic Engine"),
+        ("6. Network Scanner"),
+        ("7. Shodan Intelligence"),
     ]
     labels = [f"{label}" for label in nav_items]
     page = st.sidebar.radio("", labels, label_visibility="collapsed")
@@ -863,8 +877,9 @@ def main():
     elif "4. OSINT" in page:
         st.sidebar.markdown('<div style="font-size:10px;color:#445566;letter-spacing:2px;padding:6px 4px 2px 4px;">── TOOL ──────────────────</div>', unsafe_allow_html=True)
         option = st.sidebar.selectbox("Select tool:", [
+            "Host Discovery & Asset Inventory",
+            "Shodan OSINT Scanner",
             "SQL Injector",
-            "Port Scanner",
             "Username Hunter"
         ], label_visibility="collapsed")
         st.sidebar.markdown(f'<div style="font-size:11px;color:#8b9bab;padding:2px 4px;">▸ {option}</div>', unsafe_allow_html=True)
@@ -876,6 +891,8 @@ def main():
         ], label_visibility="collapsed")
         st.sidebar.markdown(f'<div style="font-size:11px;color:#8b9bab;padding:2px 4px;">▸ {option}</div>', unsafe_allow_html=True)
 
+    elif "6. Network Scanner" in page:
+        option = None  # Network Scanner manages its own sub-state
     else:
         option = None
     
@@ -958,6 +975,21 @@ def main():
         screen_osint(option)
     elif "5. Cryptographic Engine" in page:
         screen_crypto(option)
+    elif "6. Network Scanner" in page:
+        network_scanner.render()
+    elif "7. Shodan Intelligence" in page:
+        render_page_header("Shodan Intelligence Engine", "Full Shodan Reconnaissance & Intelligence Gathering")
+        st.markdown("---")
+        st.info("Shodan Intelligence module is active. Launch target searches or host lookups below.")
+        c1, c2 = st.columns([3, 2])
+        with c1:
+            query = st.text_input("Enter Shodan Search Query (e.g. apache country:EG):", value="apache country:EG")
+        with c2:
+            key = st.text_input("API Key:", value="6apjUWGhpborF2uwaC0AToSg5dVb3OQx", type="password")
+        if st.button("Run Shodan Query"):
+            cmd = [sys.executable, "runner.py", "ShodanScan", json.dumps({"target": query, "api_key": key})]
+            start_task("shodan", cmd)
+            st.rerun()
 
 if __name__ == "__main__":
     main()

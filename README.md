@@ -1,7 +1,7 @@
 # CipherPick — Full Technical Documentation
 
 > **Version:** 2.0 · Cyberpunk-Dark Edition  
-> **Interface:** Streamlit Web GUI (`app.py`) + CLI (`main.py`)  
+> **Interface:** PyQt5 Desktop GUI (`run_gui.py`) + CLI (`main.py`) + Legacy Streamlit (`app.py`)  
 > **Architecture:** Decoupled background OS processes via `runner.py`
 
 ---
@@ -23,13 +23,13 @@
 
 CipherPick ("Cipher" + "Pick") is a modular, offensive and defensive security toolkit that bundles multiple cybersecurity disciplines into a single unified interface. It provides:
 
-- **Offensive tools**: SQL injection, phishing, password cracking, MITM interception
+- **Offensive tools**: SQL injection (via asqlmap), phishing, password cracking, MITM interception
 - **Steganography**: hiding data inside images and text using bit-manipulation
 - **Digital Forensics**: file signature analysis, entropy measurement, string extraction
-- **OSINT**: social media username hunting, network port scanning
+- **OSINT**: social media username hunting, network port scanning, Shodan Intelligence Engine
 - **Cryptography**: AES-128, RSA-2048, SHA-256 operations
 
-The GUI is built with Streamlit and uses a **background task manager** (`runner.py`) so all long-running tools (SQLMap, port scans, PDF recovery, username hunting) persist even when the user navigates between pages.
+The modern GUI is built with PyQt5 featuring a premium Cyberpunk aesthetic and uses a **background task manager** (`runner.py`) so all long-running tools (SQLMap, Shodan API queries, port scans, PDF recovery, username hunting) persist seamlessly even when navigating between screens.
 
 ---
 
@@ -37,10 +37,14 @@ The GUI is built with Streamlit and uses a **background task manager** (`runner.
 
 ```
 CipherPick/
-├── app.py                  # Streamlit GUI (all screens + task manager)
+├── run_gui.py              # Main PyQt5 GUI entry point
+├── app.py                  # Legacy Streamlit GUI
 ├── main.py                 # CLI entry point (menu-driven)
 ├── runner.py               # Background subprocess wrapper
 ├── engine.py               # Cryptographic engine (AES, RSA, SHA-256)
+├── GUI/                    # PyQt5 UI Components (Cyberpunk styling)
+│   ├── app_window.py       # Main Application Window
+│   └── screens/            # Individual Module UI Screens
 ├── core/
 │   ├── attack_base.py      # Abstract base class for all attack strategies
 │   ├── greedy_engine.py    # Reusable Greedy algorithm engine
@@ -50,20 +54,22 @@ CipherPick/
     ├── stegano/            # Image and text steganography
     ├── forensics/          # File investigation tools
     ├── osint/              # Username hunter, OSINT crawlers
-    ├── scanner/            # Port scanner (Phase 1 + Phase 2 Nmap)
-    ├── sqlmap-master/      # SQLMap (external tool, bundled)
+    ├── scanner/            # Port scanner, Attack Surface, L0p4Map Subnet Scanner
+    ├── shodan/             # Shodan Intelligence Engine integration
+    ├── sqlmap-master/      # SQLMap core
+    ├── asqlmap-master/     # asqlmap (integrated GUI compatible SQL Injector)
     └── mitm/               # ARP poisoner utilities
 ```
 
 ### Background Task Manager (runner.py)
-When the user starts a tool in the GUI, `app.py` spawns a **detached OS process**:
+When the user starts a tool in the GUI, the Task Manager spawns a **detached OS process**:
 ```python
 subprocess.Popen([sys.executable, "-u", "runner.py", "TaskType", json_kwargs],
                  stdout=log_file, stderr=subprocess.STDOUT, env={PYTHONUNBUFFERED:1})
 ```
 - Output is piped line-by-line to `.cipherpick_logs/<task_id>.log`
-- The GUI tails the log file every 0.15 seconds and streams it into the terminal widget
-- The process survives page navigation because it is an **independent OS process**
+- The GUI streams the log file directly into the terminal widget in real-time
+- The process survives screen navigation because it is an **independent OS process**
 
 ---
 

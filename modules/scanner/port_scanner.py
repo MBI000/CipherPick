@@ -129,7 +129,17 @@ class OptimizedPortScanner:
         # Keep a mapping of port -> state for later display
         port_states = {}
 
-        print("PORT     STATE    SERVICE")
+        print(f"{BOLD}{'PORT':<10} {'STATE':<10} {'SERVICE':<10}{RESET}")
+
+        results_dict = {
+            "target": self.target,
+            "ip": target_ip,
+            "hostname": rdns or self.target,
+            "os": "Unknown",
+            "os_icon": "🖥",
+            "ports": [],
+            "raw_output": ""
+        }
 
         with ThreadPoolExecutor(max_workers=500) as executor:
             results = executor.map(self._check_port, prioritized_ports)
@@ -143,23 +153,29 @@ class OptimizedPortScanner:
                 elif state == 'filtered':
                     filtered_ports.append(port)
 
-                # Determine whether to print this port
-                show_all = len(port_list) <= 30 and not only_open
-                if not show_all and state != 'open':
-                    continue
-
                 try:
                     service = socket.getservbyport(port, "tcp")
                 except OSError:
                     service = "unknown"
 
-                if port == 8443:
-                    service = "https-alt"
-                elif port == 8080:
-                    service = "http-proxy"
+                if port == 8443: service = "https-alt"
+                elif port == 8080: service = "http-proxy"
+
+                # Populate results_dict
+                results_dict["ports"].append({
+                    "port": str(port),
+                    "protocol": "tcp",
+                    "state": state,
+                    "service": service,
+                    "version": ""
+                })
+
+                # Determine whether to print this port
+                show_all = len(port_list) <= 30 and not only_open
+                if not show_all and state != 'open':
+                    continue
 
                 port_str = f"{port}/tcp"
-
                 if state == 'open':
                     colored_state = f"{GREEN}open{RESET}"
                 elif state == 'closed':
@@ -167,8 +183,8 @@ class OptimizedPortScanner:
                 elif state == 'filtered':
                     colored_state = f"{YELLOW}filtered{RESET}"
 
-                state_pad = " " * (8 - len(state))
-                print(f"{port_str:<8} {colored_state}{state_pad} {service}", flush=True)
+                state_padding = " " * (10 - len(state))
+                print(f"{port_str:<10} {colored_state}{state_padding} {service}", flush=True)
 
         open_ports.sort()
         closed_ports.sort()
@@ -186,7 +202,7 @@ class OptimizedPortScanner:
 
         print(f"\nNmap done: 1 IP address (1 host up) scanned in {duration} seconds")
 
-        return open_ports
+        return results_dict
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -217,14 +233,14 @@ def _highlight_ips_macs(text: str) -> str:
 
 def _colorize_stream_line(raw: str) -> str:
     """
-    Colorize a single raw nmap output line using priority-ordered rules.
+    Colorize a single raw nmap output line using priority-ordered rules for all Nmap scan types.
     IP / MAC addresses are always highlighted in Magenta regardless of rule.
     """
     line = raw.rstrip('\n').rstrip('\r')
     low  = line.lower()
 
     # Phase / progress indicators ─── Cyan
-    if any(kw in low for kw in ('initiating', 'completed', 'nse:', 'scanning')):
+    if any(kw in low for kw in ('initiating', 'completed', 'nse:', 'scanning', 'starting nmap', 'nmap done', 'read data files from', 'massping', 'ping scan')):
         colored = f"{CYAN}{line}{RESET}"
 
     # Open ports / success ─────── Bold Green
@@ -242,7 +258,7 @@ def _colorize_stream_line(raw: str) -> str:
         colored = f"{YELLOW}{line}{RESET}"
 
     # Errors / closed / filtered ── Red (port rows get per-state colour)
-    elif any(kw in low for kw in ('filtered', 'closed', 'error', 'failed')):
+    elif any(kw in low for kw in ('filtered', 'closed', 'error', 'failed', 'unrecognized', 'unable to')):
         m = _RE_PORT_ROW.match(line)
         if m:
             state = m.group(2).lower()
@@ -256,8 +272,7 @@ def _colorize_stream_line(raw: str) -> str:
         colored = f"{BLUE}{line}{RESET}"
 
     # Section headers ─────────── Bold Cyan
-    elif any(kw in low for kw in ('nmap scan report', 'port   state',
-                                  'not shown:', 'nmap done')):
+    elif 'nmap scan report' in low or 'not shown:' in low or ('port' in low and 'state' in low and 'service' in low):
         colored = f"{CYAN}{BOLD}{line}{RESET}"
 
     # Everything else ─────────── plain white

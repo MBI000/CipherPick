@@ -1,0 +1,164 @@
+/* ============================================================
+   CipherPick — PyQt5 Cyberpunk QSS Theme
+   ============================================================ */
+
+QWidget {
+    background-color: #0a0a0c;
+    color: #c9d1d9;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 10pt;
+}
+
+QMainWindow {
+    background-color: #0a0a0c;
+}
+
+/* ── Header / Toolbar ─────────────────────────────────────── */
+QToolBar {
+    background-color: #080c12;
+    border-bottom: 1px solid #1c2333;
+    spacing: 10px;
+    padding: 5px;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────── */
+QTreeWidget#SidebarTree {
+    background-color: #080c12;
+    border: none;
+    border-right: 1px solid #1c2333;
+    outline: none;
+}
+
+QTreeWidget#SidebarTree::item {
+    padding: 8px 12px;
+    color: #8b9bab;
+    border-radius: 6px;
+    margin: 2px 8px;
+}
+
+QTreeWidget#SidebarTree::item:hover {
+    background-color: rgba(0, 242, 255, 0.07);
+    color: #c9d1d9;
+}
+
+QTreeWidget#SidebarTree::item:selected {
+    background-color: rgba(0, 242, 255, 0.12);
+    color: #00f2ff;
+    border: 1px solid #00f2ff;
+}
+
+/* Hide the default branch arrows */
+QTreeWidget#SidebarTree::branch:has-children:!has-siblings:closed,
+QTreeWidget#SidebarTree::branch:closed:has-children:has-siblings {
+    border-image: none;
+    image: none;
+}
+QTreeWidget#SidebarTree::branch:open:has-children:!has-siblings,
+QTreeWidget#SidebarTree::branch:open:has-children:has-siblings {
+    border-image: none;
+    image: none;
+}
+
+/* ── Buttons ──────────────────────────────────────────────── */
+QPushButton {
+    background-color: transparent;
+    border: 1px solid #00f2ff;
+    color: #00f2ff;
+    padding: 6px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: rgba(0, 242, 255, 0.1);
+}
+
+QPushButton:pressed {
+    background-color: rgba(0, 242, 255, 0.2);
+}
+
+QPushButton#Destructive {
+    border-color: #ff003c;
+    color: #ff003c;
+}
+
+QPushButton#Destructive:hover {
+    background-color: rgba(255, 0, 60, 0.1);
+}
+
+/* ── Inputs ───────────────────────────────────────────────── */
+QLineEdit, QComboBox, QSpinBox, QTextEdit {
+    background-color: #111118;
+    border: 1px solid #30363d;
+    padding: 5px;
+    border-radius: 4px;
+    color: #c9d1d9;
+}
+
+QLineEdit:focus, QComboBox:focus, QSpinBox:focus, QTextEdit:focus {
+    border-color: #00f2ff;
+}
+
+QComboBox::drop-down {
+    border: none;
+}
+
+/* ── Tabs ─────────────────────────────────────────────────── */
+QTabBar::tab {
+    background-color: #080c12;
+    color: #445566;
+    padding: 8px 15px;
+    border-bottom: 2px solid transparent;
+}
+
+QTabBar::tab:hover {
+    color: #8b9bab;
+}
+
+QTabBar::tab:selected {
+    color: #00f2ff;
+    border-bottom: 2px solid #00f2ff;
+    background-color: rgba(0, 242, 255, 0.05);
+}
+
+/* ── Tables / Trees ───────────────────────────────────────── */
+QHeaderView::section {
+    background-color: #080c12;
+    color: #445566;
+    padding: 5px;
+    border: 1px solid #1c2333;
+    text-transform: uppercase;
+    font-size: 8pt;
+}
+
+QTableWidget, QTreeWidget {
+    background-color: #0d1117;
+    gridline-color: #1c2333;
+    border: 1px solid #1c2333;
+}
+
+QTableWidget::item:selected, QTreeWidget::item:selected {
+    background-color: rgba(0, 242, 255, 0.1);
+    color: #00f2ff;
+}
+
+/* ── Progress Bar ─────────────────────────────────────────── */
+QProgressBar {
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    text-align: center;
+    background-color: #111118;
+}
+
+QProgressBar::chunk {
+    background-color: #00f2ff;
+}
+
+/* ── Splitter ─────────────────────────────────────────────── */
+QSplitter::handle {
+    background-color: #1c2333;
+}
+
+QSplitter::handle:hover {
+    background-color: #00f2ff;
+}

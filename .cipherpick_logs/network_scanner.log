@@ -1,0 +1,343 @@
+[1;36m### Phase 1 · Socket Scan (CipherPick native) ###[0m[0m
+[0m
+Starting CipherPick Port Scanner 1.0 at 2026-05-13 22:41[0m
+[0mPort scan report for lms.rst.edu.eg (82.165.196.199)[0m
+[0mHost is up (0.071s latency).[0m
+[0mrDNS record for 82.165.196.199: ip82-165-196-199.pbiaas.com[0m
+[0mPORT     STATE    SERVICE[0m
+[0m80/tcp   [92mopen[0m     http[0m
+[0m443/tcp  [92mopen[0m     https[0m
+[0m22/tcp   [92mopen[0m     ssh[0m
+[0mNot shown: 17 [93mfiltered[0m tcp ports (no-response)[0m
+[0m
+Nmap done: 1 IP address (1 host up) scanned in 2.54 seconds[0m
+[0m
+[1;36m### Phase 2 · NMAP Aggressive Scan (nmap -A -vv) ###[0m[0m
+[0mStarting Nmap 7.98 ( https://nmap.org ) at 2026-05-13 22:41 +0300
+[0m[96mNSE: Loaded 158 scripts for scanning.[0m
+[0m[96mNSE: Script Pre-scanning.[0m
+[0m[96mNSE: Starting runlevel 1 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:41[0m
+[0m[96mCompleted NSE at 22:41, 0.00s elapsed[0m
+[0m[96mNSE: Starting runlevel 2 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:41[0m
+[0m[96mCompleted NSE at 22:41, 0.00s elapsed[0m
+[0m[96mNSE: Starting runlevel 3 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:41[0m
+[0m[96mCompleted NSE at 22:41, 0.00s elapsed[0m
+[0m[96mInitiating Parallel DNS resolution of 1 host. at 22:41[0m
+[0m[96mCompleted Parallel DNS resolution of 1 host. at 22:41, 0.50s elapsed[0m
+[0m[96mInitiating Ping Scan at 22:41[0m
+[0m[96mScanning lms.rst.edu.eg ([95m82.165.196.199[0m) [4 ports][0m
+[0m[96mCompleted Ping Scan at 22:41, 0.19s elapsed (1 total hosts)[0m
+[0m[96mInitiating Parallel DNS resolution of 1 host. at 22:41[0m
+[0m[96mCompleted Parallel DNS resolution of 1 host. at 22:41, 0.01s elapsed[0m
+[0m[96mInitiating SYN Stealth Scan at 22:41[0m
+[0m[96mScanning lms.rst.edu.eg ([95m82.165.196.199[0m) [1000 ports][0m
+[0m[92m[1mDiscovered open port 443/tcp on [95m82.165.196.199[0m[0m
+[0m[92m[1mDiscovered open port 22/tcp on [95m82.165.196.199[0m[0m
+[0m[92m[1mDiscovered open port 80/tcp on [95m82.165.196.199[0m[0m
+[0m[92m[1mDiscovered open port 8443/tcp on [95m82.165.196.199[0m[0m
+[0m[96mCompleted SYN Stealth Scan at 22:42, 30.75s elapsed (1000 total ports)[0m
+[0m[96mInitiating Service scan at 22:42[0m
+[0m[96mScanning 4 services on lms.rst.edu.eg ([95m82.165.196.199[0m)[0m
+[0m[96mCompleted Service scan at 22:42, 27.38s elapsed (4 services on 1 host)[0m
+[0m[96mInitiating OS detection (try #1) against lms.rst.edu.eg ([95m82.165.196.199[0m)[0m
+[0m[93mRetrying OS detection (try #2) against lms.rst.edu.eg ([95m82.165.196.199[0m)[0m
+[0m[96mInitiating Traceroute at 22:42[0m
+[0m[96mCompleted Traceroute at 22:42, 3.29s elapsed[0m
+[0m[96mInitiating Parallel DNS resolution of 6 hosts. at 22:42[0m
+[0m[96mCompleted Parallel DNS resolution of 6 hosts. at 22:42, 4.15s elapsed[0m
+[0m[96mNSE: Script scanning [95m82.165.196.199[0m.[0m
+[0m[96mNSE: Starting runlevel 1 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:42[0m
+[0m[96mCompleted NSE at 22:43, 12.57s elapsed[0m
+[0m[96mNSE: Starting runlevel 2 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:43[0m
+[0m[96mCompleted NSE at 22:43, 1.96s elapsed[0m
+[0m[96mNSE: Starting runlevel 3 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:43[0m
+[0m[96mCompleted NSE at 22:43, 0.00s elapsed[0m
+[0m[96m[1mNmap scan report for lms.rst.edu.eg ([95m82.165.196.199[0m)[0m
+[0m[92m[1mHost is up, received syn-ack ttl 52 (0.086s latency).[0m
+[0mrDNS record for [95m82.165.196.199[0m: ip82-165-196-199.pbiaas.com
+[0mScanned at 2026-05-13 22:41:40 Egypt Daylight Time for 86s
+[0m[91mNot shown: 996 filtered tcp ports (no-response)[0m
+[0m[91mSome closed ports may be reported as filtered due to --defeat-rst-ratelimit[0m
+[0mPORT     STATE SERVICE       REASON         VERSION
+[0m[92m[1m22/tcp   open  ssh           syn-ack ttl 52 OpenSSH 8.2p1 Ubuntu 4ubuntu0.13+tuxcare.els3 (Ubuntu Linux; protocol 2.0)[0m
+[0m[94m| ssh-hostkey: [0m
+[0m[94m|   3072 [95mc4:a6:e2:65:b5:fa[0m:[95m62:2d:b5:d9:ad:a0[0m:04:fe:30:a9 (RSA)[0m
+[0m[94m| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCz0kfzhosIFyD9PqdwAau0hA2InR6nzgWnXECo6dKVvbI0GTLAfrrfHoFaUwkykxIlXodKGXAjGGPCauBTKd0AECRHS+cEzbBWOmcsIfr4C9UftRx+gDEZ+q3yFqsYoi9mapHJ4H5jeMRyvv+s4l/yOTYgdmfYDtGxpRHhm5i7hrYrYD/P3kfTqhj/jBzmIeL56AoSUTZiF+28VKRtsLqutX9ESEV46TsRVF0MniLAPb3al6UtsNqPzqQ98rGnDU2wEQH5jH2XviuO7OnK3AF8p4Q2Un7G2HGpjd/xleVW2Te2fgTF+yRqU9aRcSf10eFYWMJ3KPWJQjdOEfb0mgJYLQLV3BGLkDW+OAufOaTa2gGpvzGzIMa9wjadILE0uiHCqrjcKNw3PFyPcaZ1D+LO0JXpaI6kNGyIbchcxamK5LnUaxwSSGZ9y4Jcw+K/YhIEWHO43BrSTnE3B6ZvbVs6nn0KNGbojdTUJA7MRYed7rmLv2sXPs45Q6OD5qlnYX8=[0m
+[0m[94m|   256 [95m65:06:04:72:e7:ca[0m:[95m0d:3b:77:ab:23:dc[0m:d8:96:65:30 (ECDSA)[0m
+[0m[94m| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEWfp2RnHzs3YdsxwPYa+mz67qnryroPK/OOWWR6c9Vf6iPGjaRXOHjvGXhyPgD/WpcSChfh1Z8TFQPhbaUUzKI=[0m
+[0m[94m|   256 [95m59:48:77:43:e0:39[0m:[95m8f:dd:66:f5:89:dd[0m:98:f6:60:55 (ED25519)[0m
+[0m[94m|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINYwlqglyjPtzzpSxCzRipW6ZbWCqZy2gjOfF/qO0h+a[0m
+[0m[92m[1m80/tcp   open  http          syn-ack ttl 52 nginx[0m
+[0m[94m| http-methods: [0m
+[0m[94m|_  Supported Methods: GET HEAD POST OPTIONS[0m
+[0m[94m|_http-title: Did not follow redirect to https://lms.rst.edu.eg/[0m
+[0m[92m[1m443/tcp  open  ssl/http      syn-ack ttl 52 nginx[0m
+[0m[94m| ssl-cert: Subject: commonName=lms.rst.edu.eg[0m
+[0m[94m| Subject Alternative Name: DNS:lms.rst.edu.eg[0m
+[0m[94m| Issuer: commonName=R12/organizationName=Let's Encrypt/countryName=US[0m
+[0m[94m| Public Key type: rsa[0m
+[0m[94m| Public Key bits: 2048[0m
+[0m[94m| Signature Algorithm: sha256WithRSAEncryption[0m
+[0m[94m| Not valid before: 2026-04-23T07:11:40[0m
+[0m[94m| Not valid after:  2026-07-22T07:11:39[0m
+[0m[94m| MD5:     6f00 f061 ce3a 5ba4 27a3 a783 cd56 8705[0m
+[0m[94m| SHA-1:   aa5a 6377 6d0a 29ee 62ce 48bd 9936 b73e 0707 4292[0m
+[0m[94m| SHA-256: e5b4 d856 6b90 e2c3 41d7 df13 ce76 fc81 6da4 e0ab 1898 c864 4989 3cc0 9c0f 84d2[0m
+[0m[94m| -----BEGIN CERTIFICATE-----[0m
+[0m[94m| MIIE9zCCA9+gAwIBAgISBbrFFoLcInqoiWXAObeRq0uKMA0GCSqGSIb3DQEBCwUA[0m
+[0m[94m| MDMxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQwwCgYDVQQD[0m
+[0m[94m| EwNSMTIwHhcNMjYwNDIzMDcxMTQwWhcNMjYwNzIyMDcxMTM5WjAZMRcwFQYDVQQD[0m
+[0m[94m| Ew5sbXMucnN0LmVkdS5lZzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB[0m
+[0m[94m| AL3Zl6+As7ohMsD+8/h/c4tYNNihWo/0wjM3a3G3YFBYojG7lfkq11BG0adQWrST[0m
+[0m[94m| 2eU4gfCU1960k3LWRKgc7TtwQSuLwf4NhAmCgeAC/viwpTqgeb9FhLhJIN2xa5W6[0m
+[0m[94m| jhxzGULxMzkRz7jcmitJ3JvkvZa5iGQnti28Dbxb0y1c91JNxXEVaReAnD4Cnohx[0m
+[0m[94m| X5OT3LuvZXeQII3s5NPNlaPjO5xH3YKD3MO6ViIFsDoioKuDJLx34XNhEWizx/Yh[0m
+[0m[94m| sKmZ0B5knrme4IBFA7BNY9dEdJ2eOv62DumvdaaLs+MeGjncKMZKawpn2SX0Kx9R[0m
+[0m[94m| YWSjGl3dT/sSllLRE7Ppa1cCAwEAAaOCAh0wggIZMA4GA1UdDwEB/wQEAwIFoDAT[0m
+[0m[94m| BgNVHSUEDDAKBggrBgEFBQcDATAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBRlcUiE[0m
+[0m[94m| 7WTwxV4vxl3dkQV8CxBSaTAfBgNVHSMEGDAWgBQAtSnyLY5vMeibTK14Pvrc6QzR[0m
+[0m[94m| 0jAzBggrBgEFBQcBAQQnMCUwIwYIKwYBBQUHMAKGF2h0dHA6Ly9yMTIuaS5sZW5j[0m
+[0m[94m| ci5vcmcvMBkGA1UdEQQSMBCCDmxtcy5yc3QuZWR1LmVnMBMGA1UdIAQMMAowCAYG[0m
+[0m[94m| Z4EMAQIBMC4GA1UdHwQnMCUwI6AhoB+GHWh0dHA6Ly9yMTIuYy5sZW5jci5vcmcv[0m
+[0m[94m| MTEuY3JsMIIBDQYKKwYBBAHWeQIEAgSB/gSB+wD5AH4ARq+GPTs+5Z+ld96oJF02[0m
+[0m[94m| sNntIqIj9GF3QSKUUu6VUF8AAAGduWOtqQAIAAAFAASlGugEAwBHMEUCICcBdSMl[0m
+[0m[94m| YdVh4UFMrqgwZJ9yZSuHtPz0BoJokj9Ly51zAiEA//ygKm+R36udUswV7ZzW8cVf[0m
+[0m[94m| 4Xbj2cG4x1qfSZZ67gEAdwCvZ4g7V7BO3Y+m2X72LqjrgQrHcWDwJF5V1gwv54WH[0m
+[0m[94m| OgAAAZ25Y64jAAAEAwBIMEYCIQC4nfSdi+1w0bcIW5/BqN4AHzwXr5nEw7mgW5Id[0m
+[0m[94m| a3hRkgIhAMmr2z7HL9A4HG11huXwDdMDLzvr4jVOCn2KMenwOBWDMA0GCSqGSIb3[0m
+[0m[94m| DQEBCwUAA4IBAQDZhFx5FmPw1wi1etA4XRtfBMnfRPHy4tYKXAAIJ28tP8X0sKev[0m
+[0m[94m| nR1toPCebmLg5c7gpUx3n4oQ8j74JZD2Q42SC7dXss0kS1i+mDDaKBrO3UMsUIjP[0m
+[0m[94m| qK66eQr1FskX9ey0KrOD/f04RuHRQX+xMS6FySCDhRVXp+2aQGlgNJUP2ZX70cUI[0m
+[0m[94m| WeZD4SHtVb0HoVd9yA8EiVHE5GxtWHv9QADBoUj+IstY0v3IiwcUQkW2ZnAGPEsO[0m
+[0m[94m| 0TbaK6Bw5siP0inFWcKgvqVecz26o2YiDsmSeVIm9NI08+ngsyunkhCMdD8SI945[0m
+[0m[94m| 5sa/v8lXUCZ51A+anIoMWKH4kTYlmZfpwF6i[0m
+[0m[94m|_-----END CERTIFICATE-----[0m
+[0m[94m|_http-title: AlRyada LMS[0m
+[0m[94m|_http-favicon: Unknown favicon MD5: 135AED33C0A7B8F44F0227A71B9CE345[0m
+[0m[94m| http-methods: [0m
+[0m[94m|_  Supported Methods: GET HEAD POST OPTIONS[0m
+[0m[94m|_ssl-date: TLS randomness does not represent time[0m
+[0m[94m| tls-alpn: [0m
+[0m[94m|   h2[0m
+[0m[94m|   http/1.1[0m
+[0m[94m|   http/1.0[0m
+[0m[94m|_  http/0.9[0m
+[0m[92m[1m8443/tcp open  ssl/https-alt syn-ack ttl 52 sw-cp-server[0m
+[0m[94m| http-methods: [0m
+[0m[94m|_  Supported Methods: GET HEAD POST[0m
+[0m[94m| fingerprint-strings: [0m
+[0m[94m|   FourOhFourRequest: [0m
+[0m[94m|     HTTP/1.1 404 Not Found[0m
+[0m[94m|     Server: sw-cp-server[0m
+[0m[94m|     Date: Wed, 13 May 2026 19:42:24 GMT[0m
+[0m[94m|     Content-Type: text/html[0m
+[0m[94m|     Content-Length: 990[0m
+[0m[94m|     Connection: close[0m
+[0m[94m|     ETag: "69e1063b-3de"[0m
+[0m[94m|     <!DOCTYPE html>[0m
+[0m[94m|     <!-- Copyright 1999-2026. WebPros International GmbH. All rights reserved. -->[0m
+[0m[94m|     <html lang="en" dir="ltr">[0m
+[0m[94m|     <head>[0m
+[0m[94m|     <meta charset="utf-8">[0m
+[0m[94m|     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">[0m
+[0m[94m|     <title>404 Page Not Found</title>[0m
+[0m[94m|     <link rel="shortcut icon" href="/favicon.ico">[0m
+[0m[94m|     <link rel="stylesheet" href="/ui-library/plesk-ui-library.css?3.46.4-d6f41ff193392975ea9a9498f07794c53cb8acf5">[0m
+[0m[94m|     <script src="/ui-library/plesk-ui-library.min.js?3.46.4-d6f41ff193392975ea9a9498f07794c53cb8acf5"></script>[0m
+[0m[94m|     <script src="/cp/javascript/vendors.js"></script>[0m
+[0m[94m|     <script src="/cp/javascript/main.js"></script>[0m
+[0m[91m|     <script src="/error_docs/uat.js?v6"></script>[0m
+[0m[94m|     <link hre[0m
+[0m[94m|   GetRequest: [0m
+[0m[94m|     HTTP/1.1 303 See Other[0m
+[0m[94m|     Server: sw-cp-server[0m
+[0m[94m|     Date: Wed, 13 May 2026 19:42:23 GMT[0m
+[0m[94m|     Content-Type: text/html; charset=UTF-8[0m
+[0m[94m|     Connection: close[0m
+[0m[94m|     Expires: Fri, 28 May 1999 00:00:00 GMT[0m
+[0m[94m|     Last-Modified: Wed, 13 May 2026 19:42:23 GMT[0m
+[0m[94m|     Cache-Control: no-store, no-cache, must-revalidate[0m
+[0m[94m|     Pragma: no-cache[0m
+[0m[94m|     P3P: CP="NON COR CURa ADMa OUR NOR UNI COM NAV STA"[0m
+[0m[94m|     X-Frame-Options: SAMEORIGIN[0m
+[0m[94m|     X-XSS-Protection: 1; mode=block[0m
+[0m[94m|     Location: https://localhost:8443/login.php[0m
+[0m[94m|     X-Content-Type-Options: nosniff[0m
+[0m[94m|   HTTPOptions: [0m
+[0m[94m|     HTTP/1.1 405 Not Allowed[0m
+[0m[94m|     Server: sw-cp-server[0m
+[0m[94m|     Date: Wed, 13 May 2026 19:42:23 GMT[0m
+[0m[94m|     Content-Type: text/html[0m
+[0m[94m|     Content-Length: 998[0m
+[0m[94m|     Connection: close[0m
+[0m[94m|     ETag: "69e1063b-3e6"[0m
+[0m[94m|     <!DOCTYPE html>[0m
+[0m[94m|     <!-- Copyright 1999-2026. WebPros International GmbH. All rights reserved. -->[0m
+[0m[94m|     <html lang="en" dir="ltr">[0m
+[0m[94m|     <head>[0m
+[0m[94m|     <meta charset="utf-8">[0m
+[0m[94m|     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">[0m
+[0m[94m|     <title>405 Method Not Allowed</title>[0m
+[0m[94m|     <link rel="shortcut icon" href="/favicon.ico">[0m
+[0m[94m|     <link rel="stylesheet" href="/ui-library/plesk-ui-library.css?3.46.4-d6f41ff193392975ea9a9498f07794c53cb8acf5">[0m
+[0m[94m|     <script src="/ui-library/plesk-ui-library.min.js?3.46.4-d6f41ff193392975ea9a9498f07794c53cb8acf5"></script>[0m
+[0m[94m|     <script src="/cp/javascript/vendors.js"></script>[0m
+[0m[94m|     <script src="/cp/javascript/main.js"></script>[0m
+[0m[91m|_    <script src="/error_docs/uat.js?v6"></script>[0m
+[0m[94m|_http-server-header: sw-cp-server[0m
+[0m[94m| http-title: Plesk Obsidian 18.0.77[0m
+[0m[94m|_Requested resource was https://lms.rst.edu.eg:8443/login_up.php[0m
+[0m[94m|_http-favicon: Plesk Obsidian[0m
+[0m[94m| ssl-cert: Subject: commonName=practical-galois.82-165-196-199.plesk.page[0m
+[0m[94m| Subject Alternative Name: DNS:practical-galois.82-165-196-199.plesk.page[0m
+[0m[94m| Issuer: commonName=R12/organizationName=Let's Encrypt/countryName=US[0m
+[0m[94m| Public Key type: rsa[0m
+[0m[94m| Public Key bits: 2048[0m
+[0m[94m| Signature Algorithm: sha256WithRSAEncryption[0m
+[0m[94m| Not valid before: 2026-04-20T07:11:37[0m
+[0m[94m| Not valid after:  2026-07-19T07:11:36[0m
+[0m[94m| MD5:     01ce 4c0c 4144 f62b 568a 9ce1 633d 3601[0m
+[0m[94m| SHA-1:   6e85 2027 7767 452a dc0a a4b9 ea32 2af0 8b2e 1a7d[0m
+[0m[94m| SHA-256: 41a1 5689 1ec4 4fbd 1ec2 0825 c9c9 561e 267e ec36 96d5 5643 f0c9 8f93 e8e8 ecc8[0m
+[0m[94m| -----BEGIN CERTIFICATE-----[0m
+[0m[94m| MIIFLjCCBBagAwIBAgISBgCtJwLGbM+miH8n+b1xTBY6MA0GCSqGSIb3DQEBCwUA[0m
+[0m[94m| MDMxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQwwCgYDVQQD[0m
+[0m[94m| EwNSMTIwHhcNMjYwNDIwMDcxMTM3WhcNMjYwNzE5MDcxMTM2WjA1MTMwMQYDVQQD[0m
+[0m[94m| EypwcmFjdGljYWwtZ2Fsb2lzLjgyLTE2NS0xOTYtMTk5LnBsZXNrLnBhZ2UwggEi[0m
+[0m[94m| MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDFWeTuEictYHaMJ9zF54wyB1Ue[0m
+[0m[94m| m/GtmUw9jzR5vn/kPFVMdnv+aoq5TdevB6g6AZhh/laDcgsDmrcYP+qxyDNNr9cz[0m
+[0m[94m| EljF2Wc7mQsFFAR9o76KpEt8x2o4p0V1P5+LkgnzZKHkE3/1NAm4sZr92pwdcXQ5[0m
+[0m[94m| jxW2qKJK1vxGqI+cV7j6xReDDKO82Bpousl50vkeG1JaXEnOyHQ6vLYwK/FQhqGr[0m
+[0m[94m| xJS6R2Lm48mRbYWVuXrJXX2Vy4hMRzI7UtCs0TdIPMp59Gy0JZwE8a1g18/Fo/XF[0m
+[0m[94m| dtIn952aE8KQIKEqFcuVBOjQKIFOie9Dzpu8g8TtbZ2lwEgpZ7AXI/JIrFPVAgMB[0m
+[0m[94m| AAGjggI4MIICNDAOBgNVHQ8BAf8EBAMCBaAwEwYDVR0lBAwwCgYIKwYBBQUHAwEw[0m
+[0m[94m| DAYDVR0TAQH/BAIwADAdBgNVHQ4EFgQU3HQP0cLTp8RZFFWDe3kI0lEue/8wHwYD[0m
+[0m[94m| VR0jBBgwFoAUALUp8i2ObzHom0yteD763OkM0dIwMwYIKwYBBQUHAQEEJzAlMCMG[0m
+[0m[94m| CCsGAQUFBzAChhdodHRwOi8vcjEyLmkubGVuY3Iub3JnLzA1BgNVHREELjAsgipw[0m
+[0m[94m| cmFjdGljYWwtZ2Fsb2lzLjgyLTE2NS0xOTYtMTk5LnBsZXNrLnBhZ2UwEwYDVR0g[0m
+[0m[94m| BAwwCjAIBgZngQwBAgEwLgYDVR0fBCcwJTAjoCGgH4YdaHR0cDovL3IxMi5jLmxl[0m
+[0m[94m| bmNyLm9yZy81OS5jcmwwggEMBgorBgEEAdZ5AgQCBIH9BIH6APgAdQDYCVU7lE96[0m
+[0m[94m| /8gWGW+UT4WrsPj8XodVJg8V0S5yu0VLFAAAAZ2p8IvCAAAEAwBGMEQCICGb5yPl[0m
+[0m[94m| QOxsklA5DziJT2FoQJtZdAF+pnJ3WPF9fuNAAiAjTeQUQ1m9AJnITycSNL5dsUHS[0m
+[0m[94m| wdvS9PUc14Pd9RJfbAB/ABqLnWsP/r+BtHk5xtIxCobW0QLU8EbiGCyd419eJiXv[0m
+[0m[94m| AAABnanwjdUACAAABQAKmUN4BAMASDBGAiEAyIYs302fR9CzUGt7vOl78Bvqrlof[0m
+[0m[94m| QuevL3p78PC3h4QCIQDR6nn1MJtOIh4mVzSDs5oINci8e6L9bB2a+J203StLgzAN[0m
+[0m[94m| BgkqhkiG9w0BAQsFAAOCAQEAM5LUf7Dyaws6j1snytJ/SvQfP+akzjfX+tM5klGu[0m
+[0m[94m| NkHgT3Xhe9mRiFO0K8kOmTBn5Z2HUSmZb4U0RwsD76BCRd5Dj3EswBU3yoRecoR9[0m
+[0m[94m| hTRz9nmhiFQ+YWqiadmE5FOBA4JH5yhZQybcjCCKcE8ziwBiYemxqOjiBQHE4iYj[0m
+[0m[94m| zNLoVRPLg1ff8PLVhaxTUcgD5vSE3CT11omVrLJR+jlGPNMk9KU1i75OVztFVQkx[0m
+[0m[94m| ZM1zvgJFT/YR6ElDuLP50NLvpWaxtzc2BBC8oHRtT37DH2d93T7Nmf2GXSnuIn6f[0m
+[0m[94m| 2zpDwSOJn6AhojFVf8QqNPyCcn/lb2M6FFgLRBSM8BzD1w==[0m
+[0m[94m|_-----END CERTIFICATE-----[0m
+[0m[94m|_ssl-date: TLS randomness does not represent time[0m
+[0m[94m| tls-alpn: [0m
+[0m[94m|   h2[0m
+[0m[94m|   http/1.1[0m
+[0m[94m|   http/1.0[0m
+[0m[94m|_  http/0.9[0m
+[0m1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+[0mSF-Port8443-TCP:V=7.98%T=SSL%I=7%D=5/13%Time=6A04D420%P=i686-pc-windows-wi
+[0mSF:ndows%r(GetRequest,1EC,"HTTP/1\.1\x20303\x20See\x20Other\r\nServer:\x20
+[0mSF:sw-cp-server\r\nDate:\x20Wed,\x2013\x20May\x202026\x2019:42:23\x20GMT\r
+[0mSF:\nContent-Type:\x20text/html;\x20charset=UTF-8\r\nConnection:\x20close\
+[0mSF:r\nExpires:\x20Fri,\x2028\x20May\x201999\x2000:00:00\x20GMT\r\nLast-Mod
+[0mSF:ified:\x20Wed,\x2013\x20May\x202026\x2019:42:23\x20GMT\r\nCache-Control
+[0mSF::\x20no-store,\x20no-cache,\x20must-revalidate\r\nPragma:\x20no-cache\r
+[0mSF:\nP3P:\x20CP=\"NON\x20COR\x20CURa\x20ADMa\x20OUR\x20NOR\x20UNI\x20COM\x
+[0mSF:20NAV\x20STA\"\r\nX-Frame-Options:\x20SAMEORIGIN\r\nX-XSS-Protection:\x
+[0mSF:201;\x20mode=block\r\nLocation:\x20https://localhost:8443/login\.php\r\
+[0mSF:nX-Content-Type-Options:\x20nosniff\r\n\r\n")%r(HTTPOptions,494,"HTTP/1
+[0mSF:\.1\x20405\x20Not\x20Allowed\r\nServer:\x20sw-cp-server\r\nDate:\x20Wed
+[0mSF:,\x2013\x20May\x202026\x2019:42:23\x20GMT\r\nContent-Type:\x20text/html
+[0mSF:\r\nContent-Length:\x20998\r\nConnection:\x20close\r\nETag:\x20\"69e106
+[0mSF:3b-3e6\"\r\n\r\n<!DOCTYPE\x20html>\n<!--\x20Copyright\x201999-2026\.\x2
+[0mSF:0WebPros\x20International\x20GmbH\.\x20All\x20rights\x20reserved\.\x20-
+[0mSF:->\n<html\x20lang=\"en\"\x20dir=\"ltr\">\n<head>\n\x20\x20\x20\x20<meta
+[0mSF:\x20charset=\"utf-8\">\n\x20\x20\x20\x20<meta\x20name=\"viewport\"\x20c
+[0mSF:ontent=\"width=device-width,\x20initial-scale=1,\x20shrink-to-fit=no\">
+[0mSF:\n\x20\x20\x20\x20<title>405\x20Method\x20Not\x20Allowed</title>\n\x20\
+[0mSF:x20\x20\x20<link\x20rel=\"shortcut\x20icon\"\x20href=\"/favicon\.ico\">
+[0mSF:\n\x20\x20\x20\x20<link\x20rel=\"stylesheet\"\x20href=\"/ui-library/ple
+[0mSF:sk-ui-library\.css\?3\.46\.4-d6f41ff193392975ea9a9498f07794c53cb8acf5\"
+[0mSF:>\n\x20\x20\x20\x20<script\x20src=\"/ui-library/plesk-ui-library\.min\.
+[0mSF:js\?3\.46\.4-d6f41ff193392975ea9a9498f07794c53cb8acf5\"></script>\n\x20
+[0mSF:\x20\x20\x20<script\x20src=\"/cp/javascript/vendors\.js\"></script>\n\x
+[0mSF:20\x20\x20\x20<script\x20src=\"/cp/javascript/main\.js\"></script>\n\x2
+[0m[91mSF:0\x20\x20\x20<script\x20src=\"/error_docs/uat\.js\?v6\"></script>\n<li"[0m
+[0mSF:)%r(FourOhFourRequest,48A,"HTTP/1\.1\x20404\x20Not\x20Found\r\nServer:\
+[0mSF:x20sw-cp-server\r\nDate:\x20Wed,\x2013\x20May\x202026\x2019:42:24\x20GM
+[0mSF:T\r\nContent-Type:\x20text/html\r\nContent-Length:\x20990\r\nConnection
+[0mSF::\x20close\r\nETag:\x20\"69e1063b-3de\"\r\n\r\n<!DOCTYPE\x20html>\n<!--
+[0mSF:\x20Copyright\x201999-2026\.\x20WebPros\x20International\x20GmbH\.\x20A
+[0mSF:ll\x20rights\x20reserved\.\x20-->\n<html\x20lang=\"en\"\x20dir=\"ltr\">
+[0mSF:\n<head>\n\x20\x20\x20\x20<meta\x20charset=\"utf-8\">\n\x20\x20\x20\x20
+[0mSF:<meta\x20name=\"viewport\"\x20content=\"width=device-width,\x20initial-
+[0mSF:scale=1,\x20shrink-to-fit=no\">\n\x20\x20\x20\x20<title>404\x20Page\x20
+[0mSF:Not\x20Found</title>\n\x20\x20\x20\x20<link\x20rel=\"shortcut\x20icon\"
+[0mSF:\x20href=\"/favicon\.ico\">\n\x20\x20\x20\x20<link\x20rel=\"stylesheet\
+[0mSF:"\x20href=\"/ui-library/plesk-ui-library\.css\?3\.46\.4-d6f41ff19339297
+[0mSF:5ea9a9498f07794c53cb8acf5\">\n\x20\x20\x20\x20<script\x20src=\"/ui-libr
+[0mSF:ary/plesk-ui-library\.min\.js\?3\.46\.4-d6f41ff193392975ea9a9498f07794c
+[0mSF:53cb8acf5\"></script>\n\x20\x20\x20\x20<script\x20src=\"/cp/javascript/
+[0mSF:vendors\.js\"></script>\n\x20\x20\x20\x20<script\x20src=\"/cp/javascrip
+[0m[91mSF:t/main\.js\"></script>\n\x20\x20\x20\x20<script\x20src=\"/error_docs/ua[0m
+[0mSF:t\.js\?v6\"></script>\n<link\x20hre");
+[0m[93mWarning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port[0m
+[0mDevice type: general purpose|router
+[0m[93mRunning (JUST GUESSING): Linux 4.X|5.X|2.6.X|3.X (93%), MikroTik RouterOS 7.X (93%)[0m
+[0mOS CPE: cpe:/o:linux:linux_kernel:4 cpe:/o:linux:linux_kernel:5 cpe:/o:mikrotik:routeros:7 cpe:/o:linux:linux_kernel:5.6.3 cpe:/o:linux:linux_kernel:2.6 cpe:/o:linux:linux_kernel:3
+[0m[91mOS fingerprint not ideal because: Missing a closed TCP port so results incomplete[0m
+[0m[93mAggressive OS guesses: Linux 4.15 - 5.19 (93%), Linux 5.0 - 5.14 (93%), MikroTik RouterOS 7.2 - 7.5 (Linux 5.6.3) (93%), Linux 2.6.32 - 3.13 (87%), Linux 3.10 - 4.11 (87%), Linux 3.2 - 4.14 (87%), Linux 3.4 - 3.10 (87%), Linux 4.15 (87%), Linux 2.6.32 - 3.10 (86%), Linux 4.19 - 5.15 (85%)[0m
+[0mNo exact OS matches for host (test conditions non-ideal).
+[0mTCP/IP fingerprint:
+[0mSCAN(V=7.98%E=4%D=5/13%OT=22%CT=%CU=%PV=Y%DS=13%DC=T%G=N%TM=6A04D44A%P=i686-pc-windows-windows)
+[0mSEQ(SP=101%GCD=1%ISR=109%TI=Z%TS=A)
+[0mSEQ(SP=105%GCD=1%ISR=10A%TI=Z%TS=A)
+[0mOPS(O1=M584ST11NW7%O2=M584ST11NW7%O3=M584NNT11NW7%O4=M584ST11NW7%O5=M584ST11NW7%O6=M584ST11)
+[0mWIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE88%W6=FE88)
+[0mECN(R=Y%DF=Y%TG=40%W=FAF0%O=M584NNSNW7%CC=Y%Q=)
+[0mT1(R=Y%DF=Y%TG=40%S=O%A=S+%F=AS%RD=0%Q=)
+[0mT2(R=N)
+[0mT3(R=N)
+[0mT4(R=Y%DF=Y%TG=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)
+[0mU1(R=N)
+[0mIE(R=N)
+[0m
+[0mUptime guess: 46.031 days (since Sat Mar 28 20:58:16 2026)
+[0mNetwork Distance: 13 hops
+[0mTCP Sequence Prediction: Difficulty=261 (Good luck!)
+[0mIP ID Sequence Generation: All zeros
+[0mService Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+[0m
+[0mTRACEROUTE (using port 443/tcp)
+[0mHOP RTT       ADDRESS
+[0m1   2.00 ms   [95m192.168.1.1[0m
+[0m2   9.00 ms   [95m10.65.32.1[0m
+[0m3   9.00 ms   [95m10.45.11.75[0m
+[0m4   10.00 ms  [95m10.38.82.13[0m
+[0m5   112.00 ms [95m10.45.28.77[0m
+[0m6   12.00 ms  TELECOM-EGY.ear2.Marseille2.Level3.net ([95m212.133.112.110[0m)
+[0m7   ... 12
+[0m13  77.00 ms  ip82-165-196-199.pbiaas.com ([95m82.165.196.199[0m)
+[0m
+[0m[96mNSE: Script Post-scanning.[0m
+[0m[96mNSE: Starting runlevel 1 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:43[0m
+[0m[96mCompleted NSE at 22:43, 0.00s elapsed[0m
+[0m[96mNSE: Starting runlevel 2 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:43[0m
+[0m[96mCompleted NSE at 22:43, 0.00s elapsed[0m
+[0m[96mNSE: Starting runlevel 3 (of 3) scan.[0m
+[0m[96mInitiating NSE at 22:43[0m
+[0m[96mCompleted NSE at 22:43, 0.00s elapsed[0m
+[0mRead data files from: D:\Nmap
+[0mOS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+[0m[96m[1mNmap done: 1 IP address (1 host up) scanned in 89.47 seconds[0m
+[0m           Raw packets sent: 2125 (98.528KB) | Rcvd: 157 (8.046KB)
+[0m
